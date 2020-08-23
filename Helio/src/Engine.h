@@ -2,10 +2,13 @@
 
 #include <iostream>
 #include <memory>
+#include <string>
 
 #include "../game/Level1.h"
 #include "Event.h"
 #include "Renderer.h"
+#include "Log.h"
+#include "Files.h"
 
 namespace Helio
 {
@@ -16,15 +19,16 @@ namespace Helio
 		Event events;
 		Renderer renderer;
 		Level1 level1;
+		Files files;
 
 	public:
-		Engine()
+		Engine() : files(renderer)
 		{
-			renderer.Render("RENDER THIS TEXTURE");
 		}
 
 		void Init()
 		{
+			level1.Load();
 		}
 
 		void Event()
@@ -43,6 +47,8 @@ namespace Helio
 		void Render()
 		{
 			renderer.ClearRenderer();
+			std::shared_ptr<Texture> tex = files.LoadTextureFromPNG("assets/images/texture.png");
+			renderer.Render(tex);
 			level1.Render(renderer);
 			renderer.UpdateRenderer();
 		}
@@ -50,6 +56,11 @@ namespace Helio
 		bool IsRunning()
 		{
 			return isRunning;
+		}
+
+		Renderer& GetRenderer()
+		{
+			return renderer;
 		}
 
 		void Clear()

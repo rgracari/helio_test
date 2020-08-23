@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <memory>
 
+#include "Texture.h"
 #include "Log.h"
 #include "Constants.h"
 
@@ -17,15 +18,13 @@ namespace Helio
 	public:
 		Renderer()
 		{
-			LOG_ERROR("Renderer()");
 			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 		}
 
-		void Render(const char* mess)
+		void Render(std::shared_ptr<Texture> texture)
 		{
-			LOG_ERROR(mess);
-			//SDL_RenderCopy(renderer)
+			SDL_RenderCopy(renderer, texture->GetSDLTexture(), NULL, NULL);
 		}
 
 		void UpdateRenderer()
@@ -35,8 +34,13 @@ namespace Helio
 
 		void ClearRenderer()
 		{
-			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
+			SDL_SetRenderDrawColor(renderer, RENDERER_BASE_COLOR, RENDERER_BASE_COLOR, RENDERER_BASE_COLOR, RENDERER_BASE_COLOR);
 			SDL_RenderClear(renderer);
+		}
+
+		SDL_Renderer* GetSDLRenderer()
+		{
+			return renderer;
 		}
 
 		~Renderer()
@@ -45,7 +49,6 @@ namespace Helio
 			renderer = NULL;
 			SDL_DestroyWindow(window);
 			window = NULL;
-			LOG_ERROR("~Renderer()");
 		}
 	};
 }

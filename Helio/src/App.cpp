@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 	int imgFlags = IMG_INIT_PNG;
 	if (!(IMG_Init(imgFlags) & imgFlags))
 	{
-		LOG_ERROR("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+		LOG_ERROR("SDL_image could not initialize! SDL_image Error: %s\n");
 	}
 
 	Run();

@@ -99,9 +99,14 @@
     <ClInclude Include="game\Level1.h" />
     <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\Event.h" />
+    <ClInclude Include="src\Files.h" />
     <ClInclude Include="src\Log.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\Texture.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\texture.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
