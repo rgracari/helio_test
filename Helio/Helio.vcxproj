@@ -105,10 +105,13 @@
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shape.h" />
+    <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Viewport.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="assets\images\background.png" />
+    <Image Include="assets\images\foo.png" />
     <Image Include="assets\images\texture.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
