@@ -7,6 +7,7 @@
 #include "Shape.h"
 #include "Log.h"
 #include "Constants.h"
+#include "Viewport.h"
 
 namespace Helio
 {
@@ -15,6 +16,7 @@ namespace Helio
 	private:
 		SDL_Renderer* renderer = NULL;
 		SDL_Window* window = NULL;
+		Viewport rendererViewport = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
 
 	public:
 		Renderer()
@@ -25,11 +27,24 @@ namespace Helio
 
 		void Render(std::shared_ptr<Texture> texture)
 		{
+			Render(texture, rendererViewport);
+		}
+
+		void Render(std::shared_ptr<Texture> texture, Viewport& vp)
+		{
+			SDL_RenderSetViewport(renderer, vp.GetRect());
 			SDL_RenderCopy(renderer, texture->GetSDLTexture(), NULL, NULL);
 		}
 
+		// a voir si on transforme pas en sharedptr
 		void Render(Shape* shape)
 		{
+			Render(shape, rendererViewport);
+		}
+		
+		void Render(Shape* shape, Viewport& vp)
+		{
+			SDL_RenderSetViewport(renderer, vp.GetRect());
 			SDL_SetRenderDrawColor(renderer, shape->red, shape->green, shape->blue, shape->alpha);
 			if (shape->isFilled)
 				SDL_RenderFillRect(renderer, &shape->rect);

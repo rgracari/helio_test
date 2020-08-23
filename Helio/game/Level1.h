@@ -24,6 +24,7 @@ namespace Helio
 		}
 		void Render(Renderer& renderer)
 		{
+			/*
 			SDL_Rect rect = {
 				WINDOW_WIDTH / 3,
 				WINDOW_HEIGHT / 6,
@@ -31,8 +32,10 @@ namespace Helio
 				WINDOW_HEIGHT * 2 / 3
 			};
 			Shape shape = Shape(rect, 0xFF, 0xFF, 0x00, 0x05, true);
-			//renderer.Render(tex);a
-			renderer.Render(&shape);
+			*/
+			//renderer.Render(&shape);
+			
+			renderer.Render(tex);
 		}
 		void Clear()
 		{

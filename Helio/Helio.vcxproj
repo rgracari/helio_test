@@ -106,6 +106,7 @@
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shape.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Viewport.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\texture.png" />

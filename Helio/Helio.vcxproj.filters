@@ -53,6 +53,9 @@
     <ClInclude Include="src\Rect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Viewport.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\texture.png">
