@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <SDL_image.h>
 #include <memory>
 
 #include "Log.h"
@@ -37,8 +38,15 @@ int main(int argc, char* argv[])
 		LOG_ERROR("Warning: Linear texture filtering not enabled!\n");
 	}
 
+	int imgFlags = IMG_INIT_PNG;
+	if (!(IMG_Init(imgFlags) & imgFlags))
+	{
+		LOG_ERROR("SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError());
+	}
+
 	Run();
 
+	IMG_Quit();
 	SDL_Quit();
 	return 0;
 }

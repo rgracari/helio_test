@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 
+#include "../game/Level1.h"
 #include "Event.h"
 #include "Renderer.h"
 
@@ -12,11 +13,14 @@ namespace Helio
 	{
 	private:
 		bool isRunning = true;
+		Event events;
+		Renderer renderer;
+		Level1 level1;
 
 	public:
 		Engine()
 		{
-			Renderer::Get().Render("RENDER THIS TEXTURE");
+			renderer.Render("RENDER THIS TEXTURE");
 		}
 
 		void Init()
@@ -25,20 +29,22 @@ namespace Helio
 
 		void Event()
 		{
-			//Event::SetEvents();
-			Event::Get().Listen(isRunning);
+			events.Listen(isRunning);
 			//SceneManager::Get().Event();
+			level1.Events(events);
 		}
 
 		void Update()
 		{
 			//SceneManager::Get().Update();
+			level1.Update();
 		}
 
 		void Render()
 		{
-			Renderer::Get().ClearRenderer();
-			Renderer::Get().UpdateRenderer();
+			renderer.ClearRenderer();
+			level1.Render(renderer);
+			renderer.UpdateRenderer();
 		}
 
 		bool IsRunning()

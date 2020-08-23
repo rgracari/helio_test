@@ -6,13 +6,14 @@ namespace Helio
 {
 	class Event
 	{
-	public:
-		Event(const Event& other) = delete;
+	private:
+		SDL_Event e;
+		const uint8_t* keyboardState = NULL;
 
-		static Event& Get()
+	public:
+		Event()
 		{
-			static Event instance;
-			return instance;
+
 		}
 
 		// a voir changer ca
@@ -33,12 +34,6 @@ namespace Helio
 			}
 			keyboardState = SDL_GetKeyboardState(NULL);
 		}
-
-	private:
-		SDL_Event e;
-		const uint8_t* keyboardState;
-
-		Event() {}
-		~Event() {}
 	};
+
 }

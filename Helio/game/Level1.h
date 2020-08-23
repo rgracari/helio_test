@@ -13,7 +13,11 @@ namespace Helio
 		{
 
 		}
-		void Event()
+		void Load()
+		{
+
+		}
+		void Events(Event& events)
 		{
 
 		}
@@ -21,7 +25,11 @@ namespace Helio
 		{
 
 		}
-		void Render()
+		void Render(Renderer& renderer)
+		{
+
+		}
+		void Clear()
 		{
 
 		}

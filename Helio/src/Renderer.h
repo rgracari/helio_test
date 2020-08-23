@@ -10,13 +10,16 @@ namespace Helio
 {
 	class Renderer
 	{
-	public:
-		Renderer(const Renderer&) = delete;
+	private:
+		SDL_Renderer* renderer = NULL;
+		SDL_Window* window = NULL;
 
-		static Renderer& Get()
+	public:
+		Renderer()
 		{
-			static Renderer instance;
-			return instance;
+			LOG_ERROR("Renderer()");
+			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
+			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 		}
 
 		void Render(const char* mess)
@@ -34,18 +37,6 @@ namespace Helio
 		{
 			SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 			SDL_RenderClear(renderer);
-		}
-
-	private:
-		SDL_Renderer* renderer = NULL;
-		SDL_Window* window = NULL;
-		static Renderer instance;
-
-		Renderer()
-		{
-			LOG_ERROR("Renderer()");
-			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 		}
 
 		~Renderer()
