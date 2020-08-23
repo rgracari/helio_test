@@ -11,9 +11,8 @@ bool isRunning = true;
 void Run()
 {
 	std::unique_ptr<Helio::Engine> engine = std::make_unique<Helio::Engine>();
-	engine->Init();
 	
-	//for (int i = 0; i < 100; i++)
+	engine->Init();
 	while (engine->IsRunning())
 	{
 		engine->Event();

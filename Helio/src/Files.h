@@ -2,7 +2,6 @@
 
 #include "Texture.h"
 
-
 namespace Helio
 {
 	class Files

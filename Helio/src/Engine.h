@@ -28,7 +28,7 @@ namespace Helio
 
 		void Init()
 		{
-			level1.Load();
+			level1.Load(files);
 		}
 
 		void Event()
@@ -47,9 +47,9 @@ namespace Helio
 		void Render()
 		{
 			renderer.ClearRenderer();
-			std::shared_ptr<Texture> tex = files.LoadTextureFromPNG("assets/images/texture.png");
-			renderer.Render(tex);
+			
 			level1.Render(renderer);
+			
 			renderer.UpdateRenderer();
 		}
 

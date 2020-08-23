@@ -7,15 +7,12 @@ namespace Helio
 	class Level1 : public Scene
 	{
 	private:
-		// Things here like viewport
+		std::shared_ptr<Texture> tex;
+		
 	public:
-		Level1()
+		void Load(Files& file)
 		{
-
-		}
-		void Load()
-		{
-
+			tex = file.LoadTextureFromPNG("assets/images/texture.png");
 		}
 		void Events(Event& events)
 		{
@@ -27,13 +24,9 @@ namespace Helio
 		}
 		void Render(Renderer& renderer)
 		{
-
+			renderer.Render(tex);
 		}
 		void Clear()
-		{
-
-		}
-		~Level1()
 		{
 
 		}
