@@ -1,3 +1,3 @@
 - Changer les Spritesheets
 - Ajouter le delta time a l'update methode
-- Changer le Shape pour accepter plus de trucs sympa
+- Changer le Shape pour accepter plus de trucs sympa et changer dans le renderer pour un shared ptr

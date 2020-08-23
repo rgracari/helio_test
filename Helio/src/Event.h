@@ -11,10 +11,7 @@ namespace Helio
 		const uint8_t* keyboardState = NULL;
 
 	public:
-		Event()
-		{
-
-		}
+		Event() {}
 
 		// a voir changer ca
 		bool GetKeyDown(SDL_Scancode key)

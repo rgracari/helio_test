@@ -30,5 +30,15 @@ namespace Helio
 		{
 			SDL_SetTextureColorMod(texture->GetSDLTexture(), r, g, b);
 		}
+
+		void ModulateAlpha(uint8_t alpha)
+		{
+			SDL_SetTextureAlphaMod(texture->GetSDLTexture(), alpha);
+		}
+
+		void SetBlendMode(SDL_BlendMode blendMode)
+		{
+			SDL_SetTextureBlendMode(texture->GetSDLTexture(), blendMode);
+		}
 	};
 }
