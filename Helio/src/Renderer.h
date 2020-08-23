@@ -6,6 +6,7 @@
 #include "Texture.h"
 #include "Shape.h"
 #include "Sprite.h"
+#include "Spritesheet.h"
 
 #include "Log.h"
 #include "Constants.h"
@@ -27,15 +28,26 @@ namespace Helio
 			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 		}
 
-		void Render(std::shared_ptr<Sprite> texture)
+		void Render(std::shared_ptr<Sprite> sprite)
 		{
-			Render(texture, rendererViewport);
+			Render(sprite, rendererViewport);
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite, Viewport& vp)
 		{
 			SDL_RenderSetViewport(renderer, vp.GetRect());
 			SDL_RenderCopy(renderer, sprite->GetSDLTexture(), NULL, sprite->GetSDLRect());
+		}
+
+		void Render(std::shared_ptr<Spritesheet> spritesheet)
+		{
+			Render(spritesheet, rendererViewport);
+		}
+
+		void Render(std::shared_ptr<Spritesheet> spritesheet, Viewport& vp)
+		{
+			SDL_RenderSetViewport(renderer, vp.GetRect());
+			SDL_RenderCopy(renderer, spritesheet->GetSDLTexture(), spritesheet->GetSDLInnerRect(), spritesheet->GetSDLRect());
 		}
 
 		// a voir si on transforme pas en sharedptr

@@ -59,6 +59,9 @@
     <ClInclude Include="src\Sprite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Spritesheet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\texture.png">
@@ -70,5 +73,11 @@
     <Image Include="assets\images\background.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\images\dots.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\todo.txt" />
   </ItemGroup>
 </Project>

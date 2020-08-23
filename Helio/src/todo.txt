@@ -1,0 +1,3 @@
+- Changer les Spritesheets
+- Ajouter le delta time a l'update methode
+- Changer le Shape pour accepter plus de trucs sympa
