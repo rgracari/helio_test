@@ -20,10 +20,15 @@ namespace Helio
 		{
 			return texture->GetSDLTexture();
 		}
-
+		
 		SDL_Rect* GetSDLRect()
 		{
 			return &rect;
+		}
+
+		void ModulateColor(uint8_t r, uint8_t g, uint8_t b)
+		{
+			SDL_SetTextureColorMod(texture->GetSDLTexture(), r, g, b);
 		}
 	};
 }

@@ -7,14 +7,13 @@ namespace Helio
 	class Level1 : public Scene
 	{
 	private:
-		std::shared_ptr<Spritesheet> spritesheet;
+		std::shared_ptr<Sprite> sprite;
+		uint8_t r = 0;
 
 	public:
 		void Load(Files& file)
 		{
-			std::shared_ptr<Sprite> tempSprite = file.LoadSpriteFromPNG("assets/images/dots.png", true, 0x00, 0xFF, 0xFF);
-			
-			spritesheet = std::make_shared<Spritesheet>(tempSprite, SDL_Rect({ 0, 100, 100, 100 }));
+			sprite = file.LoadSpriteFromPNG("assets/images/dots.png");
 		}
 		void Events(Event& events)
 		{
@@ -22,11 +21,13 @@ namespace Helio
 		}
 		void Update()
 		{
-
+			if (r >= 255) r = 0;
+			sprite->ModulateColor(r, 255, 255);
+			r++;
 		}
 		void Render(Renderer& renderer)
 		{
-			renderer.Render(spritesheet);
+			renderer.Render(sprite);
 		}
 		void Clear()
 		{
