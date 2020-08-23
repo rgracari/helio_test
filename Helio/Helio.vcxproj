@@ -101,8 +101,10 @@
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\Files.h" />
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Rect.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
+    <ClInclude Include="src\Shape.h" />
     <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>

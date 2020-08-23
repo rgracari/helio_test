@@ -8,7 +8,7 @@ namespace Helio
 	{
 	private:
 		std::shared_ptr<Texture> tex;
-		
+
 	public:
 		void Load(Files& file)
 		{
@@ -24,7 +24,15 @@ namespace Helio
 		}
 		void Render(Renderer& renderer)
 		{
-			renderer.Render(tex);
+			SDL_Rect rect = {
+				WINDOW_WIDTH / 3,
+				WINDOW_HEIGHT / 6,
+				WINDOW_WIDTH * 2 / 3,
+				WINDOW_HEIGHT * 2 / 3
+			};
+			Shape shape = Shape(rect, 0xFF, 0xFF, 0x00, 0x05, true);
+			//renderer.Render(tex);a
+			renderer.Render(&shape);
 		}
 		void Clear()
 		{

@@ -4,6 +4,7 @@
 #include <memory>
 
 #include "Texture.h"
+#include "Shape.h"
 #include "Log.h"
 #include "Constants.h"
 
@@ -25,6 +26,15 @@ namespace Helio
 		void Render(std::shared_ptr<Texture> texture)
 		{
 			SDL_RenderCopy(renderer, texture->GetSDLTexture(), NULL, NULL);
+		}
+
+		void Render(Shape* shape)
+		{
+			SDL_SetRenderDrawColor(renderer, shape->red, shape->green, shape->blue, shape->alpha);
+			if (shape->isFilled)
+				SDL_RenderFillRect(renderer, &shape->rect);
+			else
+				SDL_RenderDrawRect(renderer, &shape->rect);
 		}
 
 		void UpdateRenderer()
