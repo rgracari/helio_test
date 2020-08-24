@@ -1,5 +1,7 @@
 #pragma once
 
+#include <tuple>
+
 #include "Texture.h"
 #include "Font.h"
 
@@ -31,7 +33,7 @@ namespace Helio
 			return sprite;
 		}
 
-		std::shared_ptr<Sprite> LoadSpriteFromPNG(std::string path, bool setColorKey = false, int r = 0x00, int g = 0x00, int b = 0x00)
+		std::tuple<std::shared_ptr<Texture>, SDL_Rect> LoadSpriteFromPNG(std::string path, bool setColorKey = false, int r = 0x00, int g = 0x00, int b = 0x00)
 		{
 			SDL_Surface* loadedSurface = IMG_Load(path.c_str());
 			if (loadedSurface == NULL)
@@ -40,12 +42,11 @@ namespace Helio
 			} // maybe make a else
 			if (setColorKey)
 				SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, r, g, b));
+			
 			std::shared_ptr<Texture> newTexture = std::make_shared<Texture>(SDL_CreateTextureFromSurface(renderer.GetSDLRenderer(), loadedSurface));
-			// voir ce warnings
 			SDL_Rect rectSprite = { 0, 0, loadedSurface->w, loadedSurface->h };
 			SDL_FreeSurface(loadedSurface);
-			std::shared_ptr<Sprite> sprite = std::make_shared<Sprite>(newTexture, rectSprite);
-			return sprite;
+			return { newTexture, rectSprite};
 		}
 	};
 }

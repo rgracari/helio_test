@@ -32,7 +32,7 @@ namespace Helio
 			level1.Load(files);
 		}
 
-		void Event()
+		void Events()
 		{
 			events.Listen(isRunning);
 			//SceneManager::Get().Event();

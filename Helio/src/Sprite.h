@@ -5,6 +5,9 @@
 
 #include "Texture.h"
 
+#include "Renderer.h"
+#include "Event.h"
+
 namespace Helio
 {
 	class Sprite
@@ -13,7 +16,7 @@ namespace Helio
 		double angle = 0.0;
 		SDL_Point center;
 
-	private:
+	protected:
 		std::shared_ptr<Texture> texture;
 		SDL_Rect rect;
 		SDL_RendererFlip flip = SDL_FLIP_NONE;
@@ -57,6 +60,11 @@ namespace Helio
 		void FlipTexture(SDL_RendererFlip flipFlag)
 		{
 			flip = flipFlag;
+		}
+
+		virtual ~Sprite()
+		{
+
 		}
 	};
 }

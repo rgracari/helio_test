@@ -7,23 +7,25 @@ namespace Helio
 	class Level1 : public Scene
 	{
 	private:
-		std::shared_ptr<Sprite> sprite;
-	
+		std::shared_ptr<Button> button;
+		
 	public:
 		void Load(Files& file)
 		{
-			sprite = file.LoadSpriteFromTTF("assets/fonts/lazy.ttf", "Salut les gens", SDL_Color({0, 0, 0}), 45);
+			auto [texture, rect] = file.LoadSpriteFromPNG("assets/images/dots.png");
+			button = std::make_shared<Button>(texture, rect, 200, 200);
 		}
 		void Events(Event& events)
 		{
-
+			button->Events(events);
 		}
 		void Update()
 		{
+			//button.Update(events);
 		}
 		void Render(Renderer& renderer)
 		{
-			renderer.Render(sprite);
+			renderer.Render(button);
 		}
 		void Clear()
 		{

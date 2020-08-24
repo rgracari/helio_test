@@ -3,6 +3,7 @@
 #include "Event.h"
 #include "Renderer.h"
 #include "Files.h"
+#include "Button.h"
 
 namespace Helio
 {

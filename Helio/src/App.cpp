@@ -16,7 +16,7 @@ void Run()
 	engine->Init();
 	while (engine->IsRunning())
 	{
-		engine->Event();
+		engine->Events();
 		engine->Update();
 		engine->Render();
 	}
