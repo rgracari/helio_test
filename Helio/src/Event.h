@@ -29,7 +29,7 @@ namespace Helio
 		// a voir changer ca
 		bool GetKeyDown(SDL_Scancode key)
 		{
-			return (keyboardState[key] == true);
+			return (keyboardState[key]);
 		}
 
 		/*

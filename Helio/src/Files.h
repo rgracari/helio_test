@@ -4,6 +4,7 @@
 
 #include "Texture.h"
 #include "Font.h"
+#include "Music.h"
 
 namespace Helio
 {
@@ -14,6 +15,11 @@ namespace Helio
 
 	public:
 		Files(Renderer& render) : renderer(render) {}
+
+		std::shared_ptr<Music> LoadMusicFromFile(std::string path)
+		{
+			return std::make_shared<Music>(Mix_LoadMUS(path.c_str()));
+		}
 
 		std::shared_ptr<Sprite> LoadSpriteFromTTF(std::string path, std::string text, SDL_Color textcolor, int fontSize)
 		{

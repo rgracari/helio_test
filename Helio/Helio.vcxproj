@@ -45,15 +45,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\vclib\SDL2_ttf-2.0.15\include;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vclib\SDL2_ttf-2.0.15\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\vclib\SDL2_mixer-2.0.4\include;C:\vclib\SDL2_ttf-2.0.15\include;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\vclib\SDL2_mixer-2.0.4\lib\x64;C:\vclib\SDL2_ttf-2.0.15\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\bin</OutDir>
     <IntDir>$(SolutionDir)\bin-int</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\vclib\SDL2_ttf-2.0.15\include;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vclib\SDL2_ttf-2.0.15\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\vclib\SDL2_mixer-2.0.4\include;C:\vclib\SDL2_ttf-2.0.15\include;C:\vclib\SDL2_image-2.0.5\include;C:\vclib\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\vclib\SDL2_mixer-2.0.4\lib\x64;C:\vclib\SDL2_ttf-2.0.15\lib\x64;C:\vclib\SDL2_image-2.0.5\lib\x64;C:\vclib\SDL2-2.0.12\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)\bin</OutDir>
     <IntDir>$(SolutionDir)\bin-int</IntDir>
   </PropertyGroup>
@@ -68,7 +68,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -86,7 +86,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -97,6 +97,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\Level1.h" />
+    <ClInclude Include="src\Audio.h" />
+    <ClInclude Include="src\Music.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Constants.h" />
     <ClInclude Include="src\Event.h" />
@@ -107,6 +109,7 @@
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shape.h" />
+    <ClInclude Include="src\Sound.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Spritesheet.h" />
     <ClInclude Include="src\Texture.h" />
@@ -116,6 +119,7 @@
     <Image Include="assets\images\background.png" />
     <Image Include="assets\images\dots.png" />
     <Image Include="assets\images\foo.png" />
+    <Image Include="assets\images\prompt.png" />
     <Image Include="assets\images\texture.png" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +127,9 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\lazy.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\musics\low.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

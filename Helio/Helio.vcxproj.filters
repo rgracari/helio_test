@@ -68,6 +68,15 @@
     <ClInclude Include="src\Button.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Music.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Audio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\texture.png">
@@ -82,11 +91,19 @@
     <Image Include="assets\images\dots.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\images\prompt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\todo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\lazy.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\musics\low.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -1,8 +1,11 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL_image.h>
+#include <SDL_mixer.h>
+
 #include <memory>
 
+#include "Constants.h"
 #include "Log.h"
 #include "Engine.h"
 #include "Renderer.h"
@@ -26,7 +29,7 @@ void Run()
 int main(int argc, char* argv[])
 {
 	// Pour chaque il faudrait tester si OK
-	if (SDL_Init(SDL_INIT_VIDEO) > 0)
+	if (SDL_Init(Helio::INIT_SDL_FLAGS) > 0)
 	{
 		LOG_ERROR("SDL unable to init: ");
 		LOG_ERROR(SDL_GetError());
@@ -38,10 +41,15 @@ int main(int argc, char* argv[])
 		LOG_ERROR("Warning: Linear texture filtering not enabled!\n");
 	}
 
-	int imgFlags = IMG_INIT_PNG;
+	int imgFlags = Helio::INIT_IMG_FLAGS;
 	if (!(IMG_Init(imgFlags) & imgFlags))
 	{
 		LOG_ERROR("SDL_image could not initialize! SDL_image Error: %s\n");
+	}
+
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+	{
+		LOG_ERROR("SDL_mixer could not initialize! SDL_mixer Error: %s\n");
 	}
 
 	if (TTF_Init() == -1)
@@ -52,6 +60,7 @@ int main(int argc, char* argv[])
 	Run();
 
 	TTF_Quit();
+	Mix_Quit();
 	IMG_Quit();
 	SDL_Quit();
 	return 0;
