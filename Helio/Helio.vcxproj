@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\Level1.h" />
+    <ClInclude Include="game\Player.h" />
     <ClInclude Include="src\Audio.h" />
     <ClInclude Include="src\Music.h" />
     <ClInclude Include="src\Button.h" />
@@ -113,12 +114,16 @@
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Spritesheet.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Time.h" />
+    <ClInclude Include="src\Timer.h" />
+    <ClInclude Include="src\Vector2.h" />
     <ClInclude Include="src\Viewport.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\background.png" />
     <Image Include="assets\images\dots.png" />
     <Image Include="assets\images\foo.png" />
+    <Image Include="assets\images\mage.png" />
     <Image Include="assets\images\prompt.png" />
     <Image Include="assets\images\texture.png" />
   </ItemGroup>

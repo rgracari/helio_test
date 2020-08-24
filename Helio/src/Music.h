@@ -23,3 +23,18 @@ namespace Helio
 		}
 	};
 }
+
+/*
+if (events.GetKeyDown(SDL_SCANCODE_UP))
+{
+	Mix_PlayMusic(music->GetMusic(), -1);
+}
+if (events.GetKeyDown(SDL_SCANCODE_DOWN))
+{
+	Mix_PauseMusic();
+}
+if (events.GetKeyDown(SDL_SCANCODE_LEFT))
+{
+	Mix_ResumeMusic();
+}
+*/

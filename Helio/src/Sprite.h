@@ -8,6 +8,8 @@
 #include "Renderer.h"
 #include "Event.h"
 
+#include "Vector2.h"
+
 namespace Helio
 {
 	class Sprite

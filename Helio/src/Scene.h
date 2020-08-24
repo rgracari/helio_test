@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "Files.h"
 #include "Button.h"
+#include "Timer.h"
 
 namespace Helio
 {
