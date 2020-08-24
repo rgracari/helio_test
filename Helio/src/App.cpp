@@ -1,4 +1,5 @@
 #include <SDL.h>
+#include <SDL_ttf.h>
 #include <SDL_image.h>
 #include <memory>
 
@@ -43,8 +44,14 @@ int main(int argc, char* argv[])
 		LOG_ERROR("SDL_image could not initialize! SDL_image Error: %s\n");
 	}
 
+	if (TTF_Init() == -1)
+	{
+		LOG_ERROR("SDL_ttf could not initialize! SDL_ttf Error: %s");
+	}
+
 	Run();
 
+	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
 	return 0;

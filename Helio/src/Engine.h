@@ -7,6 +7,7 @@
 #include "../game/Level1.h"
 #include "Event.h"
 #include "Renderer.h"
+#include "Font.h"
 #include "Log.h"
 #include "Files.h"
 

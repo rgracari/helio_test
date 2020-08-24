@@ -2,21 +2,17 @@
 
 #include "../src/Scene.h"
 
-
-
-
 namespace Helio
 {
 	class Level1 : public Scene
 	{
 	private:
 		std::shared_ptr<Sprite> sprite;
-		int frame = 0;
 	
 	public:
 		void Load(Files& file)
 		{
-			sprite = file.LoadSpriteFromPNG("assets/images/dots.png");
+			sprite = file.LoadSpriteFromTTF("assets/fonts/lazy.ttf", "Salut les gens", SDL_Color({0, 0, 0}), 45);
 		}
 		void Events(Event& events)
 		{
