@@ -20,6 +20,11 @@ namespace Helio
 	public:
 		Spritesheet(std::shared_ptr<Sprite> sprt, SDL_Rect rct) : sprite(sprt), innerRect(rct) {}
 
+		void SetInnerRect(SDL_Rect rect)
+		{
+			innerRect = rect;
+		}
+
 		SDL_Texture* GetSDLTexture()
 		{
 			return sprite->GetSDLTexture();

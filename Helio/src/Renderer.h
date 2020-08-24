@@ -25,7 +25,7 @@ namespace Helio
 		Renderer()
 		{
 			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-			renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+			renderer = SDL_CreateRenderer(window, -1, RENDERER_MODE);
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite)
@@ -36,7 +36,13 @@ namespace Helio
 		void Render(std::shared_ptr<Sprite> sprite, Viewport& vp)
 		{
 			SDL_RenderSetViewport(renderer, vp.GetRect());
-			SDL_RenderCopy(renderer, sprite->GetSDLTexture(), NULL, sprite->GetSDLRect());
+			SDL_RenderCopyEx(renderer,
+							sprite->GetSDLTexture(),
+							NULL,
+							sprite->GetSDLRect(),
+							sprite->angle,
+							&sprite->center,
+							sprite->GetRendererFlip());
 		}
 
 		void Render(std::shared_ptr<Spritesheet> spritesheet)

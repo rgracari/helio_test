@@ -9,12 +9,20 @@ namespace Helio
 {
 	class Sprite
 	{
+	public:
+		double angle = 0.0;
+		SDL_Point center;
+
 	private:
 		std::shared_ptr<Texture> texture;
 		SDL_Rect rect;
+		SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 	public:
-		Sprite(std::shared_ptr<Texture> text, SDL_Rect rct) : texture(text), rect(rct) {}
+		Sprite(std::shared_ptr<Texture> text, SDL_Rect rct) : texture(text), rect(rct)
+		{
+			center = { rect.w / 2, rect.h / 2 };
+		}
 
 		SDL_Texture* GetSDLTexture()
 		{
@@ -24,6 +32,11 @@ namespace Helio
 		SDL_Rect* GetSDLRect()
 		{
 			return &rect;
+		}
+
+		SDL_RendererFlip& GetRendererFlip()
+		{
+			return flip;
 		}
 
 		void ModulateColor(uint8_t r, uint8_t g, uint8_t b)
@@ -39,6 +52,11 @@ namespace Helio
 		void SetBlendMode(SDL_BlendMode blendMode)
 		{
 			SDL_SetTextureBlendMode(texture->GetSDLTexture(), blendMode);
+		}
+
+		void FlipTexture(SDL_RendererFlip flipFlag)
+		{
+			flip = flipFlag;
 		}
 	};
 }
