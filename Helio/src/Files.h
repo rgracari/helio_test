@@ -52,7 +52,7 @@ namespace Helio
 			std::shared_ptr<Texture> newTexture = std::make_shared<Texture>(SDL_CreateTextureFromSurface(renderer.GetSDLRenderer(), loadedSurface));
 			SDL_Rect rectSprite = { 0, 0, loadedSurface->w, loadedSurface->h };
 			SDL_FreeSurface(loadedSurface);
-			return { newTexture, rectSprite};
+			return { newTexture, rectSprite };
 		}
 	};
 }

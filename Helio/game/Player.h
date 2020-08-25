@@ -15,19 +15,19 @@ namespace Helio
 		{
 			if (events.GetKeyDown(SDL_SCANCODE_UP))
 			{
-				rect.y -= 1;
+				rect.y -= 5;
 			}
 			if (events.GetKeyDown(SDL_SCANCODE_DOWN))
 			{
-				rect.y += 1;
+				rect.y += 5;
 			}
 			if (events.GetKeyDown(SDL_SCANCODE_LEFT))
 			{
-				rect.x -= 1;
+				rect.x -= 5;
 			}
 			if (events.GetKeyDown(SDL_SCANCODE_RIGHT))
 			{
-				rect.x += 1;
+				rect.x += 5;
 			}
 		}
 

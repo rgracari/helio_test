@@ -12,6 +12,7 @@
 #include "Log.h"
 #include "Constants.h"
 #include "Viewport.h"
+#include "Camera.h"
 
 namespace Helio
 {
@@ -27,6 +28,17 @@ namespace Helio
 		{
 			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 			renderer = SDL_CreateRenderer(window, -1, RENDERER_MODE);
+		}
+
+		void Render(std::shared_ptr<Sprite> sprite, Camera& camera)
+		{
+			SDL_RenderCopyEx(renderer,
+				sprite->GetSDLTexture(),
+				NULL,
+				&camera.Apply(sprite->GetSDLRect()),
+				sprite->angle,
+				&sprite->center,
+				sprite->GetRendererFlip());
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite)

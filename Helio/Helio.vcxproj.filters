@@ -89,6 +89,12 @@
     <ClInclude Include="src\Vector2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game\Player2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\texture.png">
@@ -107,6 +113,9 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\images\mage.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="assets\images\back.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
