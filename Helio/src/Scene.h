@@ -5,6 +5,7 @@
 #include "Files.h"
 #include "Button.h"
 #include "Timer.h"
+#include "Text.h"
 
 namespace Helio
 {

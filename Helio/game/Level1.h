@@ -6,7 +6,6 @@
 
 #include "Player.h"
 
-
 namespace Helio
 {
 	class Level1 : public Scene
@@ -14,7 +13,8 @@ namespace Helio
 	private:
 		std::shared_ptr<Sprite> background;
 		std::shared_ptr<Player> player;
-		Camera camera = { WINDOW_WIDTH, WINDOW_HEIGHT, 1920, 1080 };
+		std::shared_ptr<Font> lazyFont;
+		std::shared_ptr<Text> text;
 
 	public:
 		void Load(Files& file)
@@ -24,20 +24,27 @@ namespace Helio
 			
 			auto [texture, rect] = file.LoadSpriteFromPNG("assets/images/dots.png");
 			player = std::make_shared<Player>(texture, rect);
+
+			lazyFont = file.LoadFontFromTTF("assets/fonts/lazy.ttf", 28);
+			text = std::make_shared<Text>("Salut les gens", lazyFont);
 		}
 		void Events(Event& events)
 		{
+			if (events.GetKeyDown(SDL_SCANCODE_E))
+			{
+				text->ChangeText("Il était une fois la vie");
+			}
 			player->Events(events);
 		}
 		void Update()
 		{
 			player->Update();
-			camera.Update(player->GetSDLRect());
 		}
 		void Render(Renderer& renderer)
 		{
-			renderer.Render(background, camera);
-			renderer.Render(player, camera);
+			renderer.Render(background);
+			renderer.Render(text);
+			renderer.Render(player);
 		}
 		void Clear()
 		{

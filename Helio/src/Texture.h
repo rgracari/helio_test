@@ -10,7 +10,9 @@ namespace Helio
 		SDL_Texture* texture = NULL;
 
 	public:
-		Texture(SDL_Texture* tex) : texture(tex){}
+		Texture(SDL_Texture* tex) : texture(tex) 
+		{
+		}
 
 		SDL_Texture* GetSDLTexture()
 		{

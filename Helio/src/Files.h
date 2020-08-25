@@ -21,6 +21,11 @@ namespace Helio
 			return std::make_shared<Music>(Mix_LoadMUS(path.c_str()));
 		}
 
+		std::shared_ptr<Font> LoadFontFromTTF(std::string path, int fontSize)
+		{
+			return std::make_shared<Font>(TTF_OpenFont(path.c_str(), fontSize), fontSize);
+		}
+
 		std::shared_ptr<Sprite> LoadSpriteFromTTF(std::string path, std::string text, SDL_Color textcolor, int fontSize)
 		{
 			TTF_Font* font = TTF_OpenFont(path.c_str(), fontSize);

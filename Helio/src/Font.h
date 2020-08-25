@@ -8,13 +8,12 @@ namespace Helio
 	{
 	private:
 		TTF_Font* font = NULL;
-		Texture* texture = NULL;
-		std::string text = "";
+		int fontSize;
 
 	public:
-		Font(TTF_Font* ft) : font(ft) {}
+		Font(TTF_Font* ft, int ftSize) : font(ft), fontSize(ftSize) {}
 
-		TTF_Font* GetFont()
+		TTF_Font* GetSDLFont()
 		{
 			return font;
 		}

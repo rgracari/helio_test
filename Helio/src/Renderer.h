@@ -13,6 +13,7 @@
 #include "Constants.h"
 #include "Viewport.h"
 #include "Camera.h"
+#include "Text.h"
 
 namespace Helio
 {
@@ -28,6 +29,23 @@ namespace Helio
 		{
 			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 			renderer = SDL_CreateRenderer(window, -1, RENDERER_MODE);
+		}
+
+		void Render(std::shared_ptr<Text> text)
+		{
+			if (text->hasChanged)
+			{
+				SDL_Surface* textSurface = TTF_RenderText_Solid(text->GetFont()->GetSDLFont(), text->GetText().c_str(), text->GetColor());
+				// test if textSurface worked
+				SDL_Rect rectSprite = { 0, 0, textSurface->w, textSurface->h };
+				std::shared_ptr<Texture> texture = std::make_shared<Texture>(SDL_CreateTextureFromSurface(renderer, textSurface));
+				text->SetTexture(texture);
+				SDL_FreeSurface(textSurface);
+				// test if texture worked
+				text->GetRect() = rectSprite;
+				text->hasChanged = false;
+			}
+			SDL_RenderCopy(renderer, text->GetTexture()->GetSDLTexture(), NULL, &text->GetRect());
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite, Camera& camera)

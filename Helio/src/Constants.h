@@ -1,5 +1,7 @@
 #pragma once
 
+#include <string>
+
 namespace Helio
 {
 	constexpr int WINDOW_X = SDL_WINDOWPOS_UNDEFINED;
