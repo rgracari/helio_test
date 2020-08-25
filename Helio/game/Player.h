@@ -13,21 +13,34 @@ namespace Helio
 
 		void Events(Event& events)
 		{
-			if (events.GetKeyDown(SDL_SCANCODE_UP))
+			if (events.GetKey(SDL_SCANCODE_UP))
 			{
 				rect.y -= 5;
 			}
-			if (events.GetKeyDown(SDL_SCANCODE_DOWN))
+			if (events.GetKey(SDL_SCANCODE_DOWN))
 			{
 				rect.y += 5;
 			}
-			if (events.GetKeyDown(SDL_SCANCODE_LEFT))
+			if (events.GetKey(SDL_SCANCODE_LEFT))
 			{
 				rect.x -= 5;
 			}
-			if (events.GetKeyDown(SDL_SCANCODE_RIGHT))
+			if (events.GetKey(SDL_SCANCODE_RIGHT))
 			{
 				rect.x += 5;
+			}
+
+			if (events.GetKeyUp(SDLK_a))
+			{
+				LOG_ERROR("A PRESSED");
+			}
+			if (events.GetKey(SDL_SCANCODE_B))
+			{
+				LOG_ERROR("B PRESSED");
+			}
+			if (events.GetKeyDown(SDLK_c))
+			{
+				LOG_ERROR("C PRESSED");
 			}
 		}
 

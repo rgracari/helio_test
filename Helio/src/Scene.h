@@ -6,6 +6,7 @@
 #include "Button.h"
 #include "Timer.h"
 #include "Text.h"
+#include "Input.h"
 
 namespace Helio
 {

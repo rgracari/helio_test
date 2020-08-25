@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <tuple>
+#include <vector>
 
 namespace Helio
 {
@@ -18,27 +19,46 @@ namespace Helio
 	{
 	private:
 		SDL_Event e;
+		SDL_Event e2;
+
 		const uint8_t* keyboardState = NULL;
 		uint32_t mouseState = NULL;
 		int mousePosX = 0;
 		int mousePosY = 0;
+		std::vector<SDL_Keycode> keyUp;
+		std::vector<SDL_Keycode> keyDown;
 
 	public:
-		Event() {}
-
-		// a voir changer ca
-		bool GetKeyDown(SDL_Scancode key)
+		Event() 
 		{
-			return (keyboardState[key]);
 		}
 
-		/*
-		LEFT,
-		MIDDLE,
-		RIGHT,
-		X1,
-		X2
-		*/
+		// Surement faire une meilleur impl + rapide de ce genre de methode
+
+		bool GetKeyDown(SDL_Keycode key)
+		{
+			for (const SDL_Keycode& code : keyDown)
+			{
+				if (code == key)
+					return true;
+			}
+			return false;
+		}
+
+		bool GetKeyUp(SDL_Keycode key)
+		{
+			for (const SDL_Keycode& code : keyUp)
+			{
+				if (code == key)
+					return true;
+			}
+			return false;
+		}
+
+		bool GetKey(SDL_Scancode key)
+		{
+			return keyboardState[key];
+		}
 
 		bool GetMouseButton(MouseButtton button)
 		{
@@ -71,12 +91,23 @@ namespace Helio
 
 		void Listen(bool& isRunning)
 		{
+			keyDown.clear();
+			keyUp.clear();
+			int i = 0;
 			while (SDL_PollEvent(&e) != 0)
 			{
+				i++;
 				switch (e.type)
 				{
-				case SDL_QUIT:
-					isRunning = false;
+					case SDL_QUIT:
+						isRunning = false;
+						break;
+					case SDL_KEYDOWN:
+						keyDown.push_back(e.key.keysym.sym);
+						break;
+					case SDL_KEYUP:
+						keyUp.push_back(e.key.keysym.sym);
+						break;
 				}
 			}
 			keyboardState = SDL_GetKeyboardState(NULL);

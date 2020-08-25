@@ -14,22 +14,7 @@ namespace Helio
 
 		void Events(Event& events)
 		{
-			if (events.GetKeyDown(SDL_SCANCODE_W))
-			{
-				rect.y -= 1;
-			}
-			if (events.GetKeyDown(SDL_SCANCODE_S))
-			{
-				rect.y += 1;
-			}
-			if (events.GetKeyDown(SDL_SCANCODE_A))
-			{
-				rect.x -= 1;
-			}
-			if (events.GetKeyDown(SDL_SCANCODE_D))
-			{
-				rect.x += 1;
-			}
+
 		}
 
 		void Update()

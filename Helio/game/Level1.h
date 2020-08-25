@@ -14,7 +14,7 @@ namespace Helio
 		std::shared_ptr<Sprite> background;
 		std::shared_ptr<Player> player;
 		std::shared_ptr<Font> lazyFont;
-		std::shared_ptr<Text> text;
+		std::shared_ptr<Input> input;
 
 	public:
 		void Load(Files& file)
@@ -26,14 +26,12 @@ namespace Helio
 			player = std::make_shared<Player>(texture, rect);
 
 			lazyFont = file.LoadFontFromTTF("assets/fonts/lazy.ttf", 28);
-			text = std::make_shared<Text>("Salut les gens", lazyFont);
+			std::shared_ptr<Text> text = std::make_shared<Text>("Salut les gens", lazyFont);
+			
+			input = std::make_shared<Input>(text);
 		}
 		void Events(Event& events)
 		{
-			if (events.GetKeyDown(SDL_SCANCODE_E))
-			{
-				text->ChangeText("Il était une fois la vie");
-			}
 			player->Events(events);
 		}
 		void Update()
@@ -43,8 +41,8 @@ namespace Helio
 		void Render(Renderer& renderer)
 		{
 			renderer.Render(background);
-			renderer.Render(text);
 			renderer.Render(player);
+			//renderer.Render(text);
 		}
 		void Clear()
 		{
