@@ -30,9 +30,11 @@ namespace Helio
 	public:
 		Engine()
 		{
+
 			window.Init();
 			renderer.Init(SDL_CreateRenderer(window.GetSDLWindow(), -1, RENDERER_MODE));
 			files.Init(&renderer);
+			SDL_RenderSetLogicalSize(renderer.GetSDLRenderer(), LOGICAL_WIDTH, LOGICAL_HEIGHT);
 		}
 
 		void Init()

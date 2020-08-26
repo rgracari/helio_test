@@ -36,7 +36,7 @@ int main(int argc, char* argv[])
 		return -1;
 	}
 
-	if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1"))
+	if (!SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, Helio::RENDERER_HINT_SCALE_QUALITY))
 	{
 		LOG_ERROR("Warning: Linear texture filtering not enabled!\n");
 	}

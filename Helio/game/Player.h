@@ -17,19 +17,19 @@ namespace Helio
 			velocity.x = 0;
 			if (events.GetKey(SDL_SCANCODE_UP))
 			{
-				velocity.y -= 500;
+				velocity.y -= 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_DOWN))
 			{
-				velocity.y += 500;
+				velocity.y += 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_LEFT))
 			{
-				velocity.x -= 500;
+				velocity.x -= 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_RIGHT))
 			{
-				velocity.x += 500;
+				velocity.x += 300;
 			}
 		}
 

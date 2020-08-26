@@ -5,47 +5,41 @@
 #include "../src/Scene.h"
 
 #include "Player.h"
+#include "Player2.h"
 
 namespace Helio
 {
 	class Level1 : public Scene
 	{
 	private:
-		std::shared_ptr<Sprite> background;
 		std::shared_ptr<Player> player;
-		std::shared_ptr<Font> lazyFont;
-		std::shared_ptr<Text> text;
-		std::shared_ptr<Quadrilateral> rectangle;
+		std::shared_ptr<Player2> player2;
 
 	public:
 		void Load(Files& file)
 		{
-			auto [textureBack, rectBack] = file.LoadSpriteFromPNG("assets/images/cc.png");
-			background = std::make_shared<Sprite>(textureBack, rectBack);
-			
-			auto [texture, rect] = file.LoadSpriteFromPNG("assets/images/dots.png");
+			auto [texture, rect] = file.LoadSpriteFromPNG("assets/images/mage.png");
 			player = std::make_shared<Player>(texture, rect);
 
-			lazyFont = file.LoadFontFromTTF("assets/fonts/lazy.ttf", 28);
-			text = std::make_shared<Text>("0 FPS", lazyFont, SDL_Color({ 255, 255, 0 }), Vector2({WINDOW_WIDTH - 150, 50}));
-
-			rectangle = std::make_shared<Quadrilateral>(SDL_Rect({100, 100, 200, 200}), SDL_Color({255, 255, 0, 255}), false);
+			auto [texture2, rect2] = file.LoadSpriteFromPNG("assets/images/archer.png");
+			rect2.x = 100;
+			rect2.y = 100;
+			player2 = std::make_shared<Player2>(texture2, rect2);
 		}
 		void Events(Event& events)
 		{
 			player->Events(events);
+			player2->Events(events);
 		}
 		void Update(const double& delta)
 		{
-			text->ChangeText(std::to_string(int(1 / delta)) + " FPS");
 			player->Update(delta);
+			player2->Update(delta);
 		}
 		void Render(Renderer& renderer)
 		{
-			renderer.Render(background);
-			renderer.Render(rectangle);
 			renderer.Render(player);
-			renderer.Render(text);
+			renderer.Render(player2);
 		}
 		void Clear()
 		{
