@@ -104,6 +104,12 @@
     <ClInclude Include="src\Text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\File.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\texture.png">
@@ -130,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\todo.txt" />
+    <Text Include="assets\data\things.txt" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="assets\fonts\lazy.ttf" />

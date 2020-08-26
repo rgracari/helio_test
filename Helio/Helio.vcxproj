@@ -101,6 +101,7 @@
     <ClInclude Include="game\Player2.h" />
     <ClInclude Include="src\Audio.h" />
     <ClInclude Include="src\Camera.h" />
+    <ClInclude Include="src\File.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Intl.h" />
     <ClInclude Include="src\Music.h" />
@@ -123,6 +124,7 @@
     <ClInclude Include="src\Timer.h" />
     <ClInclude Include="src\Vector2.h" />
     <ClInclude Include="src\Viewport.h" />
+    <ClInclude Include="src\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\back.png" />
@@ -134,6 +136,7 @@
     <Image Include="assets\images\texture.png" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="assets\data\things.txt" />
     <Text Include="src\todo.txt" />
   </ItemGroup>
   <ItemGroup>

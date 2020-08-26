@@ -31,6 +31,12 @@ namespace Helio
 			return currentText;
 		}
 
+		std::string& GetText()
+		{
+			hasChanged = true;
+			return currentText;
+		}
+
 		void ChangeText(const std::string& string)
 		{
 			currentText = string;

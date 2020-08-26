@@ -18,14 +18,17 @@ namespace Helio
 	private:
 		bool isRunning = true;
 		Event events;
+		Window window;
 		Renderer renderer;
 		Level1 level1;
 		Files files;
 
 	public:
-		Engine() : files(renderer)
+		Engine()
 		{
-
+			window.Init();
+			renderer.Init(SDL_CreateRenderer(window.GetSDLWindow(), -1, RENDERER_MODE));
+			files.Init(&renderer);
 		}
 
 		void Init()
@@ -35,7 +38,7 @@ namespace Helio
 
 		void Events()
 		{
-			events.Listen(isRunning);
+			events.Listen(isRunning, window);
 			//SceneManager::Get().Event();
 			level1.Events(events);
 		}
@@ -48,11 +51,12 @@ namespace Helio
 
 		void Render()
 		{
-			renderer.ClearRenderer();
-			
-			level1.Render(renderer);
-			
-			renderer.UpdateRenderer();
+			if (!window.IsMinimized())
+			{
+				renderer.ClearRenderer();
+				level1.Render(renderer);
+				renderer.UpdateRenderer();
+			}
 		}
 
 		bool IsRunning()

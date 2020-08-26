@@ -29,19 +29,6 @@ namespace Helio
 			{
 				rect.x += 5;
 			}
-
-			if (events.GetKeyUp(SDLK_a))
-			{
-				LOG_ERROR("A PRESSED");
-			}
-			if (events.GetKey(SDL_SCANCODE_B))
-			{
-				LOG_ERROR("B PRESSED");
-			}
-			if (events.GetKeyDown(SDLK_c))
-			{
-				LOG_ERROR("C PRESSED");
-			}
 		}
 
 		void Update()

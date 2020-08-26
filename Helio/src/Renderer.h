@@ -8,6 +8,7 @@
 #include "Shape.h"
 #include "Sprite.h"
 #include "Spritesheet.h"
+#include "Window.h"
 
 #include "Log.h"
 #include "Constants.h"
@@ -21,14 +22,14 @@ namespace Helio
 	{
 	private:
 		SDL_Renderer* renderer = NULL;
-		SDL_Window* window = NULL;
 		Viewport rendererViewport = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
 
 	public:
-		Renderer()
+		Renderer() {}
+
+		void Init(SDL_Renderer* rdr)
 		{
-			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
-			renderer = SDL_CreateRenderer(window, -1, RENDERER_MODE);
+			renderer = rdr;
 		}
 
 		void Render(std::shared_ptr<Text> text)
@@ -121,10 +122,12 @@ namespace Helio
 
 		~Renderer()
 		{
-			SDL_DestroyRenderer(renderer);
-			renderer = NULL;
-			SDL_DestroyWindow(window);
-			window = NULL;
+			if (renderer != NULL)
+			{
+				SDL_DestroyRenderer(renderer);
+				renderer = NULL;
+
+			}
 		}
 	};
 }

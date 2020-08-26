@@ -29,9 +29,11 @@ namespace Helio
 			std::shared_ptr<Text> text = std::make_shared<Text>("Salut les gens", lazyFont);
 			
 			input = std::make_shared<Input>(text);
+			
 		}
 		void Events(Event& events)
 		{
+			input->Events(events);
 			player->Events(events);
 		}
 		void Update()
@@ -42,7 +44,7 @@ namespace Helio
 		{
 			renderer.Render(background);
 			renderer.Render(player);
-			//renderer.Render(text);
+			renderer.Render(input->GetText());
 		}
 		void Clear()
 		{

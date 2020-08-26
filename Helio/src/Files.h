@@ -11,10 +11,15 @@ namespace Helio
 	class Files
 	{
 	private:
-		Renderer& renderer;
+		Renderer* renderer;
 
 	public:
-		Files(Renderer& render) : renderer(render) {}
+		Files() {}
+
+		void Init(Renderer* render)
+		{
+			renderer = render;
+		}
 
 		std::shared_ptr<Music> LoadMusicFromFile(std::string path)
 		{
@@ -36,7 +41,7 @@ namespace Helio
 			if (setColorKey)
 				SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, r, g, b));
 			
-			std::shared_ptr<Texture> newTexture = std::make_shared<Texture>(SDL_CreateTextureFromSurface(renderer.GetSDLRenderer(), loadedSurface));
+			std::shared_ptr<Texture> newTexture = std::make_shared<Texture>(SDL_CreateTextureFromSurface(renderer->GetSDLRenderer(), loadedSurface));
 			SDL_Rect rectSprite = { 0, 0, loadedSurface->w, loadedSurface->h };
 			SDL_FreeSurface(loadedSurface);
 			return { newTexture, rectSprite };

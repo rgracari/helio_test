@@ -4,6 +4,8 @@
 #include <tuple>
 #include <vector>
 
+#include "Window.h"
+
 namespace Helio
 {
 	enum class MouseButtton
@@ -27,6 +29,8 @@ namespace Helio
 		int mousePosY = 0;
 		std::vector<SDL_Keycode> keyUp;
 		std::vector<SDL_Keycode> keyDown;
+		//std::vector<SDL_Keycode> keyDown;
+		//std::vector<char[32]> textInput;
 
 	public:
 		Event() 
@@ -34,6 +38,21 @@ namespace Helio
 		}
 
 		// Surement faire une meilleur impl + rapide de ce genre de methode
+
+		const std::vector<SDL_Keycode>& GetKeysUp()
+		{
+			return keyUp;
+		}
+
+		const std::vector<SDL_Keycode>& GetKeysDown()
+		{
+			return keyDown;
+		}
+
+		/*const std::vector<char[32]>& GetTextInput()
+		{
+			return textInput;
+		}*/
 
 		bool GetKeyDown(SDL_Keycode key)
 		{
@@ -89,10 +108,11 @@ namespace Helio
 			return { mousePosX, mousePosY };
 		}
 
-		void Listen(bool& isRunning)
+		void Listen(bool& isRunning, Window& window)
 		{
 			keyDown.clear();
 			keyUp.clear();
+			//textInput.clear();
 			int i = 0;
 			while (SDL_PollEvent(&e) != 0)
 			{
@@ -107,6 +127,12 @@ namespace Helio
 						break;
 					case SDL_KEYUP:
 						keyUp.push_back(e.key.keysym.sym);
+						break;
+					case SDL_TEXTINPUT:
+						//textInput.push_back(e.text.text);
+						break;
+					case SDL_WINDOWEVENT:
+						window.HandleEvents(e);
 						break;
 				}
 			}
