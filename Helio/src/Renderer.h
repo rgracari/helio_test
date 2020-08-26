@@ -5,7 +5,7 @@
 #include <memory>
 
 #include "Texture.h"
-#include "Shape.h"
+#include "Quadrilateral.h"
 #include "Sprite.h"
 #include "Spritesheet.h"
 #include "Window.h"
@@ -38,7 +38,7 @@ namespace Helio
 			{
 				SDL_Surface* textSurface = TTF_RenderText_Solid(text->GetFont()->GetSDLFont(), text->GetText().c_str(), text->GetColor());
 				// test if textSurface worked
-				SDL_Rect rectSprite = { 0, 0, textSurface->w, textSurface->h };
+				SDL_Rect rectSprite = { text->GetRect().x, text->GetRect().y, textSurface->w, textSurface->h };
 				std::shared_ptr<Texture> texture = std::make_shared<Texture>(SDL_CreateTextureFromSurface(renderer, textSurface));
 				text->SetTexture(texture);
 				SDL_FreeSurface(textSurface);
@@ -89,15 +89,16 @@ namespace Helio
 		}
 
 		// a voir si on transforme pas en sharedptr
-		void Render(Shape* shape)
+		void Render(std::shared_ptr<Quadrilateral> shape)
 		{
 			Render(shape, rendererViewport);
 		}
 		
-		void Render(Shape* shape, Viewport& vp)
+		void Render(std::shared_ptr<Quadrilateral> shape, Viewport& vp)
 		{
+			SDL_Color color = shape->GetColor();
 			SDL_RenderSetViewport(renderer, vp.GetRect());
-			SDL_SetRenderDrawColor(renderer, shape->red, shape->green, shape->blue, shape->alpha);
+			SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
 			if (shape->isFilled)
 				SDL_RenderFillRect(renderer, &shape->rect);
 			else

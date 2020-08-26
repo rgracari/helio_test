@@ -35,7 +35,6 @@ namespace Helio
 
 		void Update(const double& delta)
 		{
-			std::cout << "Delta time: " << delta << std::endl;
 			rect.x += velocity.x * delta;
 			rect.y += velocity.y * delta;
 		}

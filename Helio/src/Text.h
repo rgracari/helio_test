@@ -20,11 +20,12 @@ namespace Helio
 		std::string currentText;
 		std::shared_ptr<Texture> texture;
 		std::shared_ptr<Font> font;
-		SDL_Color color = SDL_Color({ 0, 255, 255 });
-		SDL_Rect rect = {0, 0, 0, 0};
+		SDL_Color color;
+		SDL_Rect rect;
 
 	public:
-		Text(const std::string& string, std::shared_ptr<Font> ft) : currentText(string), font(ft) {}
+		Text(const std::string& string, std::shared_ptr<Font> ft, SDL_Color clr = SDL_Color{ 0, 0, 0 }, Vector2 vec = { 0, 0 })
+			: currentText(string), font(ft), color(clr), rect(SDL_Rect({vec.x, vec.y, 0, 0})) {}
 
 		const std::string& GetText() const
 		{

@@ -102,6 +102,7 @@
     <ClInclude Include="src\Audio.h" />
     <ClInclude Include="src\Camera.h" />
     <ClInclude Include="src\File.h" />
+    <ClInclude Include="src\Helio.h" />
     <ClInclude Include="src\Input.h" />
     <ClInclude Include="src\Intl.h" />
     <ClInclude Include="src\Music.h" />
@@ -115,7 +116,7 @@
     <ClInclude Include="src\Rect.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\Shape.h" />
+    <ClInclude Include="src\Quadrilateral.h" />
     <ClInclude Include="src\Sound.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Spritesheet.h" />
