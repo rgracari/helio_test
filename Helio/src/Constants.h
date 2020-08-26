@@ -4,6 +4,12 @@
 
 namespace Helio
 {
+	enum class SceneName
+	{
+		Level1 = 0,
+		Level2,
+	};
+
 	constexpr uint32_t INIT_SDL_FLAGS = SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_AUDIO;
 	constexpr uint32_t INIT_IMG_FLAGS = IMG_INIT_PNG;
 	constexpr const char* NAME = "Helio Engine";

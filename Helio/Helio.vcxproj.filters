@@ -119,15 +119,18 @@
     <ClInclude Include="src\Quadrilateral.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\SceneManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Level2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\todo.txt" />
     <Text Include="assets\data\things.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Users\Raphael\Desktop\mage.png">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="assets\images\mage.png">
       <Filter>Resource Files</Filter>
     </Image>

@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\Level1.h" />
+    <ClInclude Include="game\Level2.h" />
     <ClInclude Include="game\Player.h" />
     <ClInclude Include="game\Player2.h" />
     <ClInclude Include="src\Audio.h" />
@@ -117,6 +118,7 @@
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Quadrilateral.h" />
+    <ClInclude Include="src\SceneManager.h" />
     <ClInclude Include="src\Sound.h" />
     <ClInclude Include="src\Sprite.h" />
     <ClInclude Include="src\Spritesheet.h" />
@@ -134,7 +136,6 @@
     <Text Include="src\todo.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\Users\Raphael\Desktop\mage.png" />
     <Image Include="assets\images\archer.png" />
     <Image Include="assets\images\mage.png" />
   </ItemGroup>

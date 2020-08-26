@@ -48,36 +48,27 @@ namespace Helio
 			switch (e.window.event)
 			{
 			case SDL_WINDOWEVENT_SIZE_CHANGED:
-				LOG_INFO("Windows sizes changed");
 				width = e.window.data1;
 				height = e.window.data2;
 				break;
 			case SDL_WINDOWEVENT_EXPOSED:
 				isMinimised = false;
-				LOG_INFO("Windows been exposed");
 				break;
 			case SDL_WINDOWEVENT_ENTER:
-				LOG_INFO("Windows gained mouse focus");
 				break;
 			case SDL_WINDOWEVENT_LEAVE:
-				LOG_INFO("Windows lost mouse focus");
 				break;
 			case SDL_WINDOWEVENT_FOCUS_GAINED:
-				LOG_INFO("Windows gained keyboard focus");
 				break;
 			case SDL_WINDOWEVENT_FOCUS_LOST:
-				LOG_INFO("Windows lost keyboard focus");
 				break;
 			case SDL_WINDOWEVENT_MINIMIZED:
 				isMinimised = true;
-				LOG_INFO("Windows has been minimized");
 				break;
 			case SDL_WINDOWEVENT_MAXIMIZED:
 				isMinimised = false;
-				LOG_INFO("Windows has been maximized");
 				break;
 			case SDL_WINDOWEVENT_RESTORED:
-				LOG_INFO("Windows restored to normal size and position");
 				break;
 			default:
 				break;
