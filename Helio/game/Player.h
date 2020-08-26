@@ -7,32 +7,37 @@ namespace Helio
 	class Player : public Sprite
 	{
 	private:
-		Vector2 vel = { 0, 0 };
+		Vector2 velocity = { 0, 0 };
 	public:
 		Player(std::shared_ptr<Texture> text, SDL_Rect rct) : Sprite(text, rct) {}
 
 		void Events(Event& events)
 		{
+			velocity.y = 0;
+			velocity.x = 0;
 			if (events.GetKey(SDL_SCANCODE_UP))
 			{
-				rect.y -= 5;
+				velocity.y -= 500;
 			}
 			if (events.GetKey(SDL_SCANCODE_DOWN))
 			{
-				rect.y += 5;
+				velocity.y += 500;
 			}
 			if (events.GetKey(SDL_SCANCODE_LEFT))
 			{
-				rect.x -= 5;
+				velocity.x -= 500;
 			}
 			if (events.GetKey(SDL_SCANCODE_RIGHT))
 			{
-				rect.x += 5;
+				velocity.x += 500;
 			}
 		}
 
-		void Update()
+		void Update(const double& delta)
 		{
+			std::cout << "Delta time: " << delta << std::endl;
+			rect.x += velocity.x * delta;
+			rect.y += velocity.y * delta;
 		}
 	};
 }

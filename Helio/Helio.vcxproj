@@ -111,6 +111,7 @@
     <ClInclude Include="src\Files.h" />
     <ClInclude Include="src\Font.h" />
     <ClInclude Include="src\Log.h" />
+    <ClInclude Include="src\Particle.h" />
     <ClInclude Include="src\Rect.h" />
     <ClInclude Include="src\Scene.h" />
     <ClInclude Include="src\Renderer.h" />
@@ -120,6 +121,7 @@
     <ClInclude Include="src\Spritesheet.h" />
     <ClInclude Include="src\Text.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Tile.h" />
     <ClInclude Include="src\Time.h" />
     <ClInclude Include="src\Timer.h" />
     <ClInclude Include="src\Vector2.h" />

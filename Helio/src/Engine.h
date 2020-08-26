@@ -23,6 +23,10 @@ namespace Helio
 		Level1 level1;
 		Files files;
 
+		uint32_t last_ticks = 0;
+		uint32_t current_ticks = Time::GetTicks();
+		double delta = 0;
+
 	public:
 		Engine()
 		{
@@ -45,8 +49,13 @@ namespace Helio
 
 		void Update()
 		{
-			//SceneManager::Get().Update();
-			level1.Update();
+
+			SDL_Delay(1);
+			last_ticks = current_ticks;
+			current_ticks = Time::GetTicks();
+			delta = (current_ticks - last_ticks) * 0.001;
+
+			level1.Update(delta);
 		}
 
 		void Render()
