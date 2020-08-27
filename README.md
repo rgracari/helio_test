@@ -1,5 +1,3 @@
-# Helio Engine
-
 ![Helio Logo](extra/logo400.png "Helio Logo")
 
 ## Description
