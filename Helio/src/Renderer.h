@@ -9,6 +9,7 @@
 #include "Sprite.h"
 #include "Spritesheet.h"
 #include "Window.h"
+#include "Tilemap.h"
 
 #include "Log.h"
 #include "Viewport.h"
@@ -65,6 +66,17 @@ namespace Helio
 				sprite->angle,
 				&sprite->center,
 				sprite->GetRendererFlip());
+		}
+
+		void Render(std::shared_ptr<Tilemap> tilemap)
+		{		
+			for (Tile& tile : tilemap->tilemap)
+			{
+				SDL_RenderCopy(renderer,
+					tilemap->tileset->GetSDLTexture(),
+					&tile.posInTileset,
+					&tile.posInScreen);
+			}
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite)

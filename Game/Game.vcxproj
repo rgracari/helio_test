@@ -107,11 +107,16 @@
     <ClInclude Include="src\characters\Player2.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="assets\data\things.txt" />
+    <Text Include="assets\maps\level1.txt" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\images\archer.png" />
+    <Image Include="assets\images\background.png" />
     <Image Include="assets\images\mage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\musics\chant.wav" />
+    <Media Include="assets\musics\fond.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

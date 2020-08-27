@@ -37,14 +37,25 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="assets\data\things.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="assets\images\archer.png">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="assets\images\mage.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\images\background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="assets\musics\fond.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="assets\musics\chant.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="assets\maps\level1.txt" />
   </ItemGroup>
 </Project>

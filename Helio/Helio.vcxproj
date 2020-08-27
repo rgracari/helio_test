@@ -118,6 +118,8 @@
     <ClInclude Include="src\Text.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\Tile.h" />
+    <ClInclude Include="src\Tilemap.h" />
+    <ClInclude Include="src\Tileset.h" />
     <ClInclude Include="src\Time.h" />
     <ClInclude Include="src\Timer.h" />
     <ClInclude Include="src\Vector2.h" />
