@@ -64,7 +64,9 @@ namespace Helio
 
 int main(int argc, char* argv[])
 {
+	Helio::Setup();
 	std::shared_ptr<Helio::Game> game = std::make_shared<Helio::Game>();
 	Helio::RunEngine(game);
+	Helio::Clear();
 	return 0;
 }

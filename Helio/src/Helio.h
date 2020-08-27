@@ -15,9 +15,16 @@ namespace Helio
 		engine->Clear();
 	}
 
-	void HelioRunEngine(std::shared_ptr<Engine> engine)
+	void Clear()
 	{
-		// Pour chaque il faudrait tester si OK
+		TTF_Quit();
+		Mix_Quit();
+		IMG_Quit();
+		SDL_Quit();
+	}
+
+	void Setup()
+	{
 		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_JOYSTICK | SDL_INIT_AUDIO) > 0)
 		{
 			LOG_ERROR("SDL unable to init: ");
@@ -44,12 +51,5 @@ namespace Helio
 		{
 			LOG_ERROR("SDL_ttf could not initialize! SDL_ttf Error: %s");
 		}
-
-		RunEngine(engine);
-
-		TTF_Quit();
-		Mix_Quit();
-		IMG_Quit();
-		SDL_Quit();
 	}
 }

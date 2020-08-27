@@ -1,10 +1,13 @@
 #pragma once
 
+#include <SDL_mixer.h>
+
 #include <tuple>
 
 #include "Texture.h"
 #include "Font.h"
 #include "Music.h"
+#include "Sound.h"
 
 namespace Helio
 {
@@ -21,9 +24,26 @@ namespace Helio
 			renderer = render;
 		}
 
+		std::shared_ptr<Sound> LoadSoundFromFile(std::string path)
+		{
+			Mix_Chunk* mc = Mix_LoadWAV(path.c_str());
+			if (mc == NULL)
+			{
+				LOG_ERROR("MUSIC FILE DONT LOAD");
+				LOG_ERROR(Mix_GetError());
+			}
+			return std::make_shared<Sound>(mc);
+		}
+
 		std::shared_ptr<Music> LoadMusicFromFile(std::string path)
 		{
-			return std::make_shared<Music>(Mix_LoadMUS(path.c_str()));
+			Mix_Music* mu = Mix_LoadMUS(path.c_str());
+			if (mu == NULL)
+			{
+				LOG_ERROR("MUSIC FILE DONT LOAD");
+				LOG_ERROR(Mix_GetError());
+			}
+			return std::make_shared<Music>(mu);
 		}
 
 		std::shared_ptr<Font> LoadFontFromTTF(std::string path, int fontSize)

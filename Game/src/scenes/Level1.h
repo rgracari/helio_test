@@ -10,6 +10,7 @@ namespace Helio
 		std::shared_ptr<Player> player;
 		std::shared_ptr<Tileset> tileset;
 		std::shared_ptr<Tilemap> tilemap;
+		std::shared_ptr<Music> music;
 		std::vector<int> map1;
 
 	public:
@@ -37,9 +38,30 @@ namespace Helio
 			};
 
 			tilemap = std::make_shared<Tilemap>(tileset, map1, 20, 11);
+			music = file.LoadMusicFromFile("assets/music/chant.wav");
 		}
 		void Events(Event& events)
 		{
+			if (events.GetKeyDown(SDLK_v))
+			{
+				LOG_ERROR("PLAY");
+				music->Play();
+			}
+			if (events.GetKeyDown(SDLK_p))
+			{
+				LOG_ERROR("Pause");
+				music->Pause();
+			}
+			if (events.GetKeyDown(SDLK_r))
+			{
+				LOG_ERROR("Resume");
+				music->Resume();
+			}
+			if (events.GetKeyDown(SDLK_h))
+			{
+				LOG_ERROR("Halt");
+				music->Halt();
+			}
 			if (events.GetKeyDown(SDLK_t))
 			{
 				SceneManager<SceneName>::LoadScene(SceneName::Level2);
