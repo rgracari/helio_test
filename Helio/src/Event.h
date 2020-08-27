@@ -97,7 +97,6 @@ namespace Helio
 					if (mouseState & SDL_BUTTON(SDL_BUTTON_MIDDLE))
 						return true;
 					return false;
-
 				default:
 					return false;
 			}

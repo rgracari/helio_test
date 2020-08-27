@@ -11,7 +11,6 @@
 #include "Window.h"
 
 #include "Log.h"
-#include "Constants.h"
 #include "Viewport.h"
 #include "Camera.h"
 #include "Text.h"
@@ -22,14 +21,17 @@ namespace Helio
 	{
 	private:
 		SDL_Renderer* renderer = NULL;
-		Viewport rendererViewport = { 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT };
+		Viewport rendererViewport = { 0, 0, 0, 0 };
+		int baseColor;
 
 	public:
 		Renderer() {}
 
-		void Init(SDL_Renderer* rdr)
+		void Init(Window& window, int color = 0x55)
 		{
-			renderer = rdr;
+			renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+			rendererViewport = { 0, 0, window.GetWidth(), window.GetWidth() };
+			baseColor = color;
 		}
 
 		void Render(std::shared_ptr<Text> text)
@@ -47,6 +49,11 @@ namespace Helio
 				text->hasChanged = false;
 			}
 			SDL_RenderCopy(renderer, text->GetTexture()->GetSDLTexture(), NULL, &text->GetRect());
+		}
+
+		void SetRenderLogicalSize(int width, int height)
+		{
+			SDL_RenderSetLogicalSize(GetSDLRenderer(), width, height);
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite, Camera& camera)
@@ -112,7 +119,7 @@ namespace Helio
 
 		void ClearRenderer()
 		{
-			SDL_SetRenderDrawColor(renderer, RENDERER_BASE_COLOR, RENDERER_BASE_COLOR, RENDERER_BASE_COLOR, RENDERER_BASE_COLOR);
+			SDL_SetRenderDrawColor(renderer, baseColor, baseColor, baseColor, baseColor);
 			SDL_RenderClear(renderer);
 		}
 

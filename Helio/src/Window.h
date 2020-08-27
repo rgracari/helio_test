@@ -2,7 +2,6 @@
 
 #include <SDL.h>
 
-#include "Constants.h"
 #include "Log.h"
 
 namespace Helio
@@ -25,12 +24,12 @@ namespace Helio
 			isMinimised = false;
 		}
 
-		void Init()
+		void Init(std::string name, int w, int h, int x = SDL_WINDOWPOS_CENTERED, int y = SDL_WINDOWPOS_CENTERED)
 		{
-			window = SDL_CreateWindow(NAME, WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, WINDOW_FLAGS);
+			window = SDL_CreateWindow(name.c_str(), x, y, w, h, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
 			// Check if the window is really create
-			width = WINDOW_WIDTH;
-			height = WINDOW_HEIGHT;
+			width = w;
+			height = h;
 		}
 
 		int GetWidth()

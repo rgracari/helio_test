@@ -1,13 +1,6 @@
 #pragma once
 
-//#include <SDL_mixer.h>
-
-#include "../src/Scene.h"
-
-#include "../src/SceneManager.h"
-
-#include "Player.h"
-#include "Player2.h"
+#include "../characters/Player.h"
 
 namespace Helio
 {
@@ -26,7 +19,7 @@ namespace Helio
 		{
 			if (events.GetKeyDown(SDLK_t))
 			{
-				SceneManager::LoadScene(SceneName::Level2);
+				SceneManager<SceneName>::LoadScene(SceneName::Level2);
 			}
 			player->Events(events);
 		}

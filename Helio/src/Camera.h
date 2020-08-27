@@ -23,6 +23,7 @@ namespace Helio
 
 		void Update(SDL_Rect* target)
 		{
+			/*
 			camRect.x = target->x - (WINDOW_WIDTH / 2 - target->w / 2);
 			camRect.y = target->y - (WINDOW_HEIGHT / 2 - target->h / 2);
 
@@ -34,6 +35,7 @@ namespace Helio
 				camRect.x = LEVEL_WIDTH - camRect.w;
 			if (camRect.y > LEVEL_HEIGHT - camRect.h)
 				camRect.y = LEVEL_HEIGHT - camRect.h;
+			*/
 		}
 	};
 }

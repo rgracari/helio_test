@@ -15,27 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\App.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="src\Engine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\Level1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Renderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Event.h">
@@ -80,13 +69,7 @@
     <ClInclude Include="src\Timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\Vector2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Player2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Camera.h">
@@ -122,20 +105,16 @@
     <ClInclude Include="src\SceneManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="game\Level2.h">
+    <ClInclude Include="src\Clock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="src\todo.txt" />
-    <Text Include="assets\data\things.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="assets\images\mage.png">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="assets\images\archer.png">
-      <Filter>Resource Files</Filter>
-    </Image>
+    <ClCompile Include="src\Helio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -13,6 +13,9 @@ namespace Helio
 	class Scene
 	{
 	public:
+		Scene()
+		{
+		};
 		virtual void Load(Files& file) = 0;
 		virtual void Events(Event& events) = 0;
 		virtual void Update(const double& delta) = 0;

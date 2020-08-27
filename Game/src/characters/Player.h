@@ -1,7 +1,5 @@
 #pragma once
 
-#include "../src/Sprite.h"
-
 namespace Helio
 {
 	class Player : public Sprite
@@ -17,14 +15,17 @@ namespace Helio
 			velocity.x = 0;
 			if (events.GetKey(SDL_SCANCODE_UP))
 			{
+				LOG_ERROR("UP");
 				velocity.y -= 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_DOWN))
 			{
+				LOG_ERROR("DOWN");
 				velocity.y += 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_LEFT))
 			{
+				LOG_ERROR("LEFT");
 				velocity.x -= 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_RIGHT))

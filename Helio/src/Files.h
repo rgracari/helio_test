@@ -11,7 +11,7 @@ namespace Helio
 	class Files
 	{
 	private:
-		Renderer* renderer;
+		Renderer* renderer = NULL;
 
 	public:
 		Files() {}

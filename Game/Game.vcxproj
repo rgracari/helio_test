@@ -13,19 +13,19 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{3f992b4c-bd1c-40e8-846b-28feef6626b5}</ProjectGuid>
-    <RootNamespace>Helio</RootNamespace>
+    <ProjectGuid>{569a81b4-1a92-48d1-879a-b5b862c16f6e}</ProjectGuid>
+    <RootNamespace>Game</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -63,12 +63,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Helio\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -79,6 +80,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)Helio\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -86,49 +88,30 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="src\Engine.h" />
+    <ClCompile Include="src\App.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Audio.h" />
-    <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\Clock.h" />
-    <ClInclude Include="src\File.h" />
-    <ClInclude Include="src\Helio.h" />
-    <ClInclude Include="src\Input.h" />
-    <ClInclude Include="src\Intl.h" />
-    <ClInclude Include="src\Music.h" />
-    <ClInclude Include="src\Button.h" />
-    <ClInclude Include="src\Event.h" />
-    <ClInclude Include="src\Files.h" />
-    <ClInclude Include="src\Font.h" />
-    <ClInclude Include="src\Log.h" />
-    <ClInclude Include="src\Particle.h" />
-    <ClInclude Include="src\Rect.h" />
-    <ClInclude Include="src\Scene.h" />
-    <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\Quadrilateral.h" />
-    <ClInclude Include="src\SceneManager.h" />
-    <ClInclude Include="src\Sound.h" />
-    <ClInclude Include="src\Sprite.h" />
-    <ClInclude Include="src\Spritesheet.h" />
-    <ClInclude Include="src\Text.h" />
-    <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\Tile.h" />
-    <ClInclude Include="src\Time.h" />
-    <ClInclude Include="src\Timer.h" />
-    <ClInclude Include="src\Vector2.h" />
-    <ClInclude Include="src\Viewport.h" />
-    <ClInclude Include="src\Window.h" />
+    <ProjectReference Include="..\Helio\Helio.vcxproj">
+      <Project>{3f992b4c-bd1c-40e8-846b-28feef6626b5}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="src\todo.txt" />
+    <ClInclude Include="src\Config.h" />
+    <ClInclude Include="src\scenes\Level1.h" />
+    <ClInclude Include="src\scenes\Level2.h" />
+    <ClInclude Include="src\characters\Player.h" />
+    <ClInclude Include="src\characters\Player2.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Helio.cpp" />
+    <Text Include="assets\data\things.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="assets\images\archer.png" />
+    <Image Include="assets\images\mage.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

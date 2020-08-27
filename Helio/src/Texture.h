@@ -12,7 +12,6 @@ namespace Helio
 	public:
 		Texture(SDL_Texture* tex) : texture(tex) 
 		{
-			LOG_ERROR("CREATE TEXTURE");
 		}
 
 		SDL_Texture* GetSDLTexture()
@@ -23,7 +22,6 @@ namespace Helio
 		~Texture()
 		{
 			if (texture != NULL)
-				LOG_ERROR("DESTROY TEXTURE");
 				SDL_DestroyTexture(texture);
 		}
 	};
