@@ -13,7 +13,6 @@ namespace Helio
 	public:
 		double GetDeltaTime()
 		{
-			SDL_Delay(1);
 			last_ticks = current_ticks;
 			current_ticks = Time::GetTicks();
 			return ((current_ticks - last_ticks) * 0.001);

@@ -30,7 +30,7 @@ namespace Helio
 
 		void Init(Window& window, int color = 0x55)
 		{
-			renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+			renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, SDL_RENDERER_ACCELERATED); //  | SDL_RENDERER_PRESENTVSYNC
 			rendererViewport = { 0, 0, window.GetWidth(), window.GetWidth() };
 			baseColor = color;
 		}

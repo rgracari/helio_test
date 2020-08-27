@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../characters/Player.h"
+#include "../characters/Player2.h"
 
 namespace Helio
 {
@@ -8,6 +9,7 @@ namespace Helio
 	{
 	private:
 		std::shared_ptr<Player> player;
+		std::shared_ptr<Player2> player2;
 		std::shared_ptr<Tileset> tileset;
 		std::shared_ptr<Tilemap> tilemap;
 		std::shared_ptr<Music> music;
@@ -18,6 +20,11 @@ namespace Helio
 		{
 			auto [texture, rect] = file.LoadSpriteFromPNG("assets/images/mage.png");
 			player = std::make_shared<Player>(texture, rect);
+			player->position.x = LOGICAL_WIDTH / 2;
+			player->position.y = LOGICAL_HEIGHT - rect.h;
+
+			auto [playerText, playerRect] = file.LoadSpriteFromPNG("assets/images/archer.png");
+			player2 = std::make_shared<Player2>(playerText, playerRect);
 
 			auto [texture2, rect2] = file.LoadSpriteFromPNG("assets/images/background.png");
 			tileset = std::make_shared<Tileset>(texture2, rect2, 16);
@@ -66,16 +73,23 @@ namespace Helio
 			{
 				SceneManager<SceneName>::LoadScene(SceneName::Level2);
 			}
+			player2->Events(events);
 			player->Events(events);
 		}
 		void Update(const double& delta)
 		{
 			player->Update(delta);
+			player2->Update(delta);
+			if (Collider::CheckCollision(*player->GetSDLRect(), *player2->GetSDLRect()))
+			{
+				player->PrintSprite();
+			}
 		}
 		void Render(Renderer& renderer)
 		{
 			renderer.Render(tilemap);
 			renderer.Render(player);
+			renderer.Render(player2);
 		}
 		void Clear()
 		{

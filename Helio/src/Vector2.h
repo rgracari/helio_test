@@ -5,9 +5,9 @@ namespace Helio
 	class Vector2
 	{
 	public:
-		int x;
-		int y;
+		double x;
+		double y;
 
-		Vector2(int X, int Y) : x(X), y(Y) {}
+		Vector2(double X, double Y) : x(X), y(Y) {}
 	};
 }

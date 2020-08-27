@@ -24,8 +24,8 @@ namespace Helio
 		SDL_Rect rect;
 
 	public:
-		Text(const std::string& string, std::shared_ptr<Font> ft, SDL_Color clr = SDL_Color{ 0, 0, 0 }, Vector2 vec = { 0, 0 })
-			: currentText(string), font(ft), color(clr), rect(SDL_Rect({vec.x, vec.y, 0, 0})) {}
+		Text(const std::string& string, std::shared_ptr<Font> ft, SDL_Color clr = SDL_Color{ 0, 0, 0 }, Vector2 vec = { 0.0, 0.0 })
+			: currentText(string), font(ft), color(clr), rect(SDL_Rect({(int)vec.x, (int)vec.y, 0, 0})) {}
 
 		const std::string& GetText() const
 		{

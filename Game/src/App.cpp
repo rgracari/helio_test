@@ -24,7 +24,7 @@ namespace Helio
 		{
 			window.Init("Helio Engine", 1280, 720);
 			renderer.Init(window);
-			renderer.SetRenderLogicalSize(320, 180);
+			renderer.SetRenderLogicalSize(LOGICAL_WIDTH, LOGICAL_HEIGHT);
 			files.Init(&renderer);
 		}
 

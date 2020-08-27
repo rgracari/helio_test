@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "Clock.h"
+#include "Collider.h"
 
 namespace Helio
 {

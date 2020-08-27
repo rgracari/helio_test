@@ -8,6 +8,8 @@ namespace Helio
 	{
 	private:
 		Vector2 velocity = { 0, 0 };
+		Vector2 position = { 0, 0 };
+
 	public:
 		Player2(std::shared_ptr<Texture> text, SDL_Rect rct) : Sprite(text, rct) {}
 
@@ -17,26 +19,29 @@ namespace Helio
 			velocity.x = 0;
 			if (events.GetKey(SDL_SCANCODE_W))
 			{
-				velocity.y -= 300;
+				velocity.y = 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_S))
 			{
-				velocity.y += 300;
+				velocity.y = 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_A))
 			{
-				velocity.x -= 300;
+				velocity.x = 300;
 			}
 			if (events.GetKey(SDL_SCANCODE_D))
 			{
-				velocity.x += 300;
+				velocity.x = 300;
 			}
 		}
 
 		void Update(const double& delta)
 		{
-			rect.x += velocity.x * delta;
-			rect.y += velocity.y * delta;
+			position.x = velocity.x * delta;
+			position.y = velocity.y * delta;
+
+			rect.x += position.x;
+			rect.y += position.y;
 		}
 	};
 }

@@ -64,6 +64,12 @@ namespace Helio
 			flip = flipFlag;
 		}
 
+		void PrintSprite()
+		{
+			std::cout << "X :" << rect.x << ", Y: " << rect.y;
+			std::cout << ", H :" << rect.h << ", W: " << rect.w << std::endl;
+		}
+
 		virtual ~Sprite()
 		{
 
