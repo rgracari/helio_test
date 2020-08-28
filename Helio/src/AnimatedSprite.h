@@ -14,7 +14,7 @@ namespace Helio
 		SDL_Rect innerRect;
 		SDL_Rect rect;
 		std::shared_ptr<Tileset> tileset;
-		std::unordered_map<T, std::tuple<std::vector<int>, int>> animations;
+		std::unordered_map <T, std::tuple<std::vector<int>, int, bool>> animations;
 
 	public:
 		AnimatedSprite(std::shared_ptr<Tileset> tls) : tileset(tls)
@@ -25,7 +25,7 @@ namespace Helio
 			rect = SDL_Rect({0, 0, tileset->GetTiles()[0].w, tileset->GetTiles()[0].h });
 		}
 
-		void SetAnimation(T animationName, std::tuple<std::vector<int>, int> animationInfo)
+		void SetAnimation(T animationName, std::tuple<std::vector<int>, int, bool> animationInfo)
 		{
 			animations[animationName] = animationInfo;
 		}
@@ -37,7 +37,7 @@ namespace Helio
 				LOG_ERROR("The animation name doesn't exist or isn't registered");
 				return;
 			}
-			auto [spriteKey, time] = animations[animationName];
+			auto [spriteKey, time, repeat] = animations[animationName];
 			if (time == 0)
 			{
 				innerRect = tileset->GetTiles()[spriteKey[0]];
@@ -45,9 +45,15 @@ namespace Helio
 			else
 			{
 				double timePassed = TimePassed();
-				if (timePassed > time * spriteKey.size())
-					ResetUpdate();
-				innerRect = tileset->GetTiles()[int(timePassed / time)];
+				if (timePassed > time * spriteKey.size() - 1)
+				{
+					if (repeat)
+						ResetUpdate();
+				}
+				else
+				{
+					innerRect = tileset->GetTiles()[spriteKey[int(timePassed / time)]];
+				}
 			}
 		}
 
@@ -89,7 +95,6 @@ namespace Helio
 
 		void Flip(SDL_RendererFlip flipflag)
 		{
-			LOG_ERROR("GOES HERE");
 			tileset->FlipTexture(flipflag);
 		}
 

@@ -4,8 +4,9 @@ namespace Helio
 {
 	enum class Player2Animation
 	{
-		Idle,
+		Idle = 0,
 		Run,
+		Jump,
 	};
 
 	class Player2 : public AnimatedSprite<Player2Animation>
@@ -18,8 +19,9 @@ namespace Helio
 
 		Player2(std::shared_ptr<Tileset> tl) : AnimatedSprite<Player2Animation>(tl)
 		{
-			SetAnimation(Player2Animation::Idle, std::make_tuple(std::vector({ 0 }), 0 ));
-			SetAnimation(Player2Animation::Run, std::make_tuple(std::vector({ 1, 2, 3 }), 100));
+			SetAnimation(Player2Animation::Idle, std::make_tuple(std::vector({ 0 }), 0, true));
+			SetAnimation(Player2Animation::Run, std::make_tuple(std::vector({ 1, 2, 3 }), 100, true));
+			SetAnimation(Player2Animation::Jump, std::make_tuple(std::vector({ 4, 5, 6 }), 10, false));
 		}
 
 		void Events(Event& events)
@@ -44,13 +46,11 @@ namespace Helio
 			{
 				acceleration.x = -800;
 				Flip(SDL_FLIP_HORIZONTAL);
-				Animate(Player2Animation::Run);
 			}
 			if (events.GetKey(SDL_SCANCODE_D))
 			{
 				acceleration.x = 800;
 				Flip(SDL_FLIP_NONE);
-				Animate(Player2Animation::Run);
 			}
 			if (events.GetKeyDown(SDLK_z))
 			{
@@ -62,6 +62,20 @@ namespace Helio
 		{
 			velocity.x += acceleration.x * delta;
 			velocity.y += acceleration.y * delta;
+
+			if (abs(velocity.x) < 0.001)
+				velocity.x = 0;
+
+			// Animations here
+			if (abs(velocity.x) > 30)
+				Animate(Player2Animation::Run);
+			else
+				Animate(Player2Animation::Idle);
+
+			if (velocity.y < 0)
+				Animate(Player2Animation::Jump);
+
+			//std::cout << abs(velocity.x) << std::endl;
 
 			velocity.x *= friction;
 			velocity.y += 0.5;
