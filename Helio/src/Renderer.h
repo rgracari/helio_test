@@ -10,6 +10,7 @@
 #include "Spritesheet.h"
 #include "Window.h"
 #include "Tilemap.h"
+#include "AnimatedSprite.h"
 
 #include "Log.h"
 #include "Viewport.h"
@@ -82,6 +83,18 @@ namespace Helio
 		void Render(std::shared_ptr<Sprite> sprite)
 		{
 			Render(sprite, rendererViewport);
+		}
+
+		template<typename T>
+		void Render(std::shared_ptr<AnimatedSprite<T>> animatedSprite)
+		{
+			SDL_RenderCopyEx(renderer,
+				animatedSprite->GetTexture(),
+				&animatedSprite->GetInnerRect(),
+				&animatedSprite->GetRect(),
+				animatedSprite->GetTileset()->angle,
+				&animatedSprite->GetTileset()->center,
+				animatedSprite->GetTileset()->GetRendererFlip());
 		}
 
 		void Render(std::shared_ptr<Sprite> sprite, Viewport& vp)

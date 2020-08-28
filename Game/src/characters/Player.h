@@ -19,38 +19,21 @@ namespace Helio
 			if (events.GetKey(SDL_SCANCODE_LEFT))
 			{
 				acceleration.x = -800;
+				FlipTexture(SDL_FLIP_HORIZONTAL);
 			}
-			/*
-			if (events.GetKey(SDL_SCANCODE_DOWN))
-			{
-				acceleration.y = 700;
-			}
-			if (events.GetKey(SDL_SCANCODE_LEFT))
-			{
-				acceleration.x = -700;
-			}
-			*/
 			if (events.GetKey(SDL_SCANCODE_RIGHT))
 			{
 				acceleration.x = 800;
+				FlipTexture(SDL_FLIP_NONE);
 			}
-			if (events.GetKeyDown(SDLK_SPACE))
+			if (events.GetKeyDown(SDLK_UP))
 			{
-				LOG_ERROR("SAPCE PRESSED");
 				velocity.y = -200;
 			}
 		}
 
 		void Update(const double& delta)
 		{
-			
-			/*
-			if (abs(velocity.x) < 1)
-				velocity.x = 0;
-
-			if (abs(velocity.y) < 1)
-				velocity.y = 0;
-			*/
 
 			velocity.x += acceleration.x * delta;
 			velocity.y += acceleration.y * delta;
@@ -66,26 +49,6 @@ namespace Helio
 			
 			rect.x = position.x;
 			rect.y = position.y;
-
-			//SDL_Rect
-			//rect.x = rect.x + velocity.x * delta;
-			//std::cout << velocity.x * delta << std::endl;
-
-			//velocity.x += acceleration.x * delta;
-			//velocity.y += acceleration.y * delta;
-			
-			/*
-			rect.x += velocity.x * delta;
-			rect.y += velocity.y * delta;
-
-			acceleration.y += 1;
-			if (acceleration < )
-			rect.y += 
-
-			std::cout << "vel X: " << velocity.x * delta << std::endl;
-			std::cout << "vel Y: " << velocity.y * delta << std::endl;
-
-			*/
 		}
 
 		void KeepPlayerWithinBorders()

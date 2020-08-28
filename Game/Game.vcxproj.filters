@@ -46,6 +46,9 @@
     <Image Include="assets\images\background.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="assets\images\mage_animation.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\music\chant.wav">

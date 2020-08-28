@@ -113,6 +113,7 @@
     <Image Include="assets\images\archer.png" />
     <Image Include="assets\images\background.png" />
     <Image Include="assets\images\mage.png" />
+    <Image Include="assets\images\mage_animation.png" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\music\chant.wav" />

@@ -6,7 +6,7 @@ namespace Helio
 {
 	class Tileset : public Sprite
 	{
-	private:
+	protected:
 		int tileSize;
 		std::vector<SDL_Rect> tiles;
 
@@ -20,6 +20,15 @@ namespace Helio
 			{
 				for (int j = 0; j < xnumberOfTile; j++)
 					tiles.push_back(SDL_Rect({ j * tileSize, i * tileSize, tileSize, tileSize }));
+			}
+		}
+
+		void PrintTilesRect()
+		{
+			for (SDL_Rect& tile : tiles)
+			{
+				std::cout << "X :" << tile.x << ", Y: " << tile.y;
+				std::cout << ", H :" << tile.h << ", W: " << tile.w << std::endl;
 			}
 		}
 
