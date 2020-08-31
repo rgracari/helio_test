@@ -16,6 +16,11 @@ namespace Helio
 	void Game::Update()
 	{
 		Renderer::Get().Update();
+		const int pixelPerSec = 100;
+		Vector2 pos = vikingSprite.GetPosition();
+		double frameMovement = pixelPerSec * deltaTime;
+		std::cout << "FrameMovement:" << frameMovement << std::endl;
+		vikingSprite.SetPosition(pos.x + frameMovement, pos.y);
 	}
 
 	void Game::LateUpdate()
@@ -33,6 +38,13 @@ namespace Helio
 	{
 		return Renderer::Get().IsOpen();
 	}
+
+	void Game::CalculateDeltaTime()
+	{
+		deltaTime = clock.GetDeltaTime();
+		std::cout << deltaTime << std::endl;
+	}
+
 
 	Game::~Game()
 	{

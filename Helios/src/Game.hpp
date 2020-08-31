@@ -4,6 +4,7 @@
 
 #include "Texture.hpp"
 #include "Sprite.hpp"
+#include "Clock.hpp"
 
 namespace Helio
 {
@@ -15,9 +16,12 @@ namespace Helio
 		void LateUpdate();
 		void Draw();
 		bool IsRunning() const;
+		void CalculateDeltaTime();
 		~Game();
 	private:
+		Clock clock;
 		Texture vikingTexture;
 		Sprite vikingSprite;
+		double deltaTime;
 	};
 }
