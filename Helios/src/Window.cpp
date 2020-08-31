@@ -4,9 +4,7 @@ namespace Helio
 {
 	Window::Window(const std::string& windowName)
 	{
-		std::cout << "SDL INIT" << std::endl;
-		SDL_Init(SDL_INIT_VIDEO);
-		
+		Init();
 		std::cout << "Window Created" << std::endl;
 		window = SDL_CreateWindow(
 			windowName.c_str(),
@@ -18,6 +16,22 @@ namespace Helio
 		
 		if (window == NULL)
 			std::cout << "Could not create window: " << SDL_GetError() << std::endl;;
+	}
+
+	void Window::Init()
+	{
+		std::cout << "SDL INIT" << std::endl;
+		if (SDL_Init(SDL_INIT_VIDEO) < 0)
+		{
+			std::cout << "SDL could not initialize! SDL Error: " << SDL_GetError() << std::endl;
+		}
+
+		std::cout << "IMAGESDL INIT" << std::endl;
+		int imgFlags = IMG_INIT_PNG;
+		if (!(IMG_Init(imgFlags) & imgFlags))
+		{
+			std::cout << "SDL_image could not initialize! SDL_image Error: " << SDL_GetError() << std::endl;
+		}
 	}
 
 	SDL_Window* Window::GetSDLWindow()
@@ -34,6 +48,9 @@ namespace Helio
 			SDL_DestroyWindow(window);
 			window = NULL;
 		}
+
+		std::cout << "IMGSDL QUIT" << std::endl;
+		IMG_Quit();
 		std::cout << "SDL QUIT" << std::endl;
 		SDL_Quit();
 	}

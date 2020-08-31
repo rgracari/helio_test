@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include <SDL_image.h>
 #include <string>
 #include <iostream>
 
@@ -13,6 +14,7 @@ namespace Helio
 	
 	public:
 		Window(const std::string& windowName);
+		void Init();
 		SDL_Window* GetSDLWindow();
 		~Window();
 	};

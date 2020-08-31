@@ -1,5 +1,7 @@
 #include "Game.hpp"
 
+#include "Renderer.hpp"
+
 namespace Helio
 {
 	Renderer Renderer::instance("Helio game engine");
@@ -7,6 +9,8 @@ namespace Helio
 	Game::Game()
 	{
 		std::cout << "GAME CREATED" << std::endl;
+		vikingTexture.LoadFromFile("assets/images/idle.png");
+		vikingSprite.SetTexture(vikingTexture);
 	}
 
 	void Game::Update()
@@ -21,7 +25,7 @@ namespace Helio
 	void Game::Draw()
 	{
 		Renderer::Get().BeginDraw();
-		// all draw code here
+		Renderer::Get().Draw(vikingSprite);
 		Renderer::Get().EndDraw();
 	}
 	

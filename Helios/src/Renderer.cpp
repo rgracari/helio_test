@@ -12,14 +12,14 @@ namespace Helio
 			std::cout << "Could not create Renderer: " << SDL_GetError() << std::endl;
 	}
 
-	void Renderer::Set(const std::string& windowName)
-	{
-		instance = Renderer(windowName);
-	}
-
 	Renderer& Renderer::Get()
 	{
 		return instance;
+	}
+
+	SDL_Renderer* Renderer::GetSDLRenderer()
+	{
+		return renderer;
 	}
 
 	void Renderer::Update()
@@ -44,9 +44,9 @@ namespace Helio
 		SDL_RenderClear(renderer);
 	}
 
-	void Renderer::Draw(SDL_Texture* texture)
+	void Renderer::Draw(Sprite& sprite)
 	{
-		SDL_RenderCopy(renderer, texture, NULL, NULL);
+		SDL_RenderCopy(renderer, sprite.GetSDLTexture(), NULL, sprite.GetSDLRect());
 	}
 	
 	void Renderer::EndDraw()

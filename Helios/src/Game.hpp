@@ -2,8 +2,8 @@
 
 #include <SDL.h>
 
-#include "Renderer.hpp"
 #include "Texture.hpp"
+#include "Sprite.hpp"
 
 namespace Helio
 {
@@ -18,6 +18,6 @@ namespace Helio
 		~Game();
 	private:
 		Texture vikingTexture;
-		//Sprite vikingSprite;
+		Sprite vikingSprite;
 	};
 }

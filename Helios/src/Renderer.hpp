@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Window.hpp"
+#include "Sprite.hpp"
 
 namespace Helio
 {
@@ -11,17 +12,16 @@ namespace Helio
 	{
 	public:
 		Renderer(const Renderer&) = delete;
+		Renderer(const std::string& windowName);
 
 		static Renderer& Get();
 
-		static void Set(const std::string& windowName);
-
-		Renderer(const std::string& windowName);
+		SDL_Renderer* GetSDLRenderer();
 
 		void Update();
 
 		void BeginDraw();
-		void Draw(SDL_Texture* texture);
+		void Draw(Sprite& sprite);
 		void EndDraw();
 
 		bool IsOpen() const;
