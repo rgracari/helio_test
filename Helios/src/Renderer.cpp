@@ -7,7 +7,7 @@ namespace Helio
 	{
 		std::cout << "Renderer Created" << std::endl;
 
-		renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		renderer = SDL_CreateRenderer(window.GetSDLWindow(), -1, SDL_RENDERER_ACCELERATED); // | SDL_RENDERER_PRESENTVSYNC
 		if (renderer == NULL)
 			std::cout << "Could not create Renderer: " << SDL_GetError() << std::endl;
 	}
@@ -24,18 +24,7 @@ namespace Helio
 
 	void Renderer::Update()
 	{
-		SDL_Event events;
-		while (SDL_PollEvent(&events))
-		{
-			switch (events.type)
-			{
-				case SDL_QUIT:
-				{
-					std::cout << "EVENT: CLOSE WINDOW" << std::endl;
-					isOpen = false;
-				}
-			}
-		}
+		
 	}
 
 	void Renderer::BeginDraw()

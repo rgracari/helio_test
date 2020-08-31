@@ -15,12 +15,41 @@ namespace Helio
 
 	void Game::Update()
 	{
+		// there is nothing here yet
 		Renderer::Get().Update();
-		const int pixelPerSec = 100;
-		Vector2 pos = vikingSprite.GetPosition();
-		double frameMovement = pixelPerSec * deltaTime;
-		std::cout << "FrameMovement:" << frameMovement << std::endl;
-		vikingSprite.SetPosition(pos.x + frameMovement, pos.y);
+
+
+		const Vector2 pos = vikingSprite.GetPosition();
+		const int moveSpeed = 100;
+
+
+		Vector2 velocity;
+		if (input.IsKeyPressed(Input::Key::ArrowLeft))
+		{
+			velocity.x = -moveSpeed;
+		}
+		if (input.IsKeyPressed(Input::Key::ArrowRight))
+		{
+			velocity.x = moveSpeed;
+		}
+		if (input.IsKeyPressed(Input::Key::ArrowUp))
+		{
+			velocity.y = -moveSpeed;
+		}
+		if (input.IsKeyPressed(Input::Key::ArrowDown))
+		{
+			velocity.y = moveSpeed;
+		}
+
+		double xMouvement = velocity.x * deltaTime;
+		double yMouvement = velocity.y * deltaTime;
+
+		vikingSprite.SetPosition(pos.x + xMouvement, pos.y + yMouvement);
+	}
+	
+	void Game::CaptureEvent()
+	{
+		event.PollEvents();
 	}
 
 	void Game::LateUpdate()
@@ -34,9 +63,14 @@ namespace Helio
 		Renderer::Get().EndDraw();
 	}
 	
-	bool Game::IsRunning() const
+	bool Game::IsRunning()
 	{
-		return Renderer::Get().IsOpen();
+		return event.IsRunning();
+	}
+
+	void Game::CaptureInput()
+	{
+		input.Update();
 	}
 
 	void Game::CalculateDeltaTime()

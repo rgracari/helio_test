@@ -90,8 +90,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bitmaks.cpp" />
     <ClCompile Include="src\Clock.cpp" />
+    <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Sprite.cpp" />
@@ -100,8 +103,11 @@
     <ClCompile Include="src\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bitmask.hpp" />
     <ClInclude Include="src\Clock.hpp" />
+    <ClInclude Include="src\Event.hpp" />
     <ClInclude Include="src\Game.hpp" />
+    <ClInclude Include="src\Input.hpp" />
     <ClInclude Include="src\Renderer.hpp" />
     <ClInclude Include="src\Sprite.hpp" />
     <ClInclude Include="src\Texture.hpp" />
