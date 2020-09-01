@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include <memory>
 
 #include "Texture.hpp"
 #include "Sprite.hpp"
@@ -8,26 +9,30 @@
 #include "Input.hpp"
 #include "Event.hpp"
 
+#include "SceneStateMachine.hpp"
+#include "scenes/SceneSplashScreen.hpp"
+#include "scenes/SceneGame.hpp"
+
 namespace Helio
 {
 	class Game
 	{
+	private:
+		Event event;
+		Clock clock;
+		double deltaTime;
+		SceneStateMachine sceneStateMachine;
+
 	public:
 		Game();
 		void CaptureEvent();
-		void CaptureInput();
+		//void CaptureInput();
+		void ProcessInput();
 		void Update();
 		void LateUpdate();
 		void Draw();
-		bool IsRunning();
 		void CalculateDeltaTime();
+		bool IsRunning();
 		~Game();
-	private:
-		Event event;
-		Input input;
-		Clock clock;
-		Texture vikingTexture;
-		Sprite vikingSprite;
-		double deltaTime;
 	};
 }

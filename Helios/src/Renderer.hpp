@@ -26,7 +26,16 @@ namespace Helio
 
 		bool IsOpen() const;
 
+		Vector2 GetCenter()
+		{
+			int w;
+			int h;
+			SDL_GetWindowSize(window.GetSDLWindow(), &w, &h);
+			return Vector2(w / 2, h / 2);
+		}
+
 		~Renderer();
+
 
 	public:
 		static Renderer instance;

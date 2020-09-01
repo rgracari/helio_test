@@ -9,7 +9,7 @@ int main(int argc, char* argv[])
 	while (game.IsRunning())
 	{
 		game.CaptureEvent();
-		game.CaptureInput();
+		game.ProcessInput();
 		game.Update();
 		game.LateUpdate();
 		game.Draw();

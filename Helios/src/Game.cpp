@@ -6,61 +6,50 @@ namespace Helio
 {
 	Renderer Renderer::instance("Helio game engine");
 
-	Game::Game()
+	Game::Game() : deltaTime(0)
 	{
-		std::cout << "GAME CREATED" << std::endl;
-		vikingTexture.LoadFromFile("assets/images/idle.png");
-		vikingSprite.SetTexture(vikingTexture);
+		//std::shared_ptr<S
+		std::shared_ptr<SceneSplashScreen> splashScreen =
+			std::make_shared<SceneSplashScreen>(sceneStateMachine);
+
+		std::shared_ptr<SceneGame> gameScene =
+			std::make_shared<SceneGame>();
+
+		unsigned int splashScreenID = sceneStateMachine.Add(splashScreen);
+		unsigned int gameSceneID = sceneStateMachine.Add(gameScene);
+
+		splashScreen->SetSwitchToScene(gameSceneID);
+		sceneStateMachine.SwitchTo(splashScreenID);
+	}
+
+	void Game::ProcessInput()
+	{
+		sceneStateMachine.ProcessInput();
 	}
 
 	void Game::Update()
 	{
 		// there is nothing here yet
 		Renderer::Get().Update();
-
-
-		const Vector2 pos = vikingSprite.GetPosition();
-		const int moveSpeed = 100;
-
-
-		Vector2 velocity;
-		if (input.IsKeyPressed(Input::Key::ArrowLeft))
-		{
-			velocity.x = -moveSpeed;
-		}
-		if (input.IsKeyPressed(Input::Key::ArrowRight))
-		{
-			velocity.x = moveSpeed;
-		}
-		if (input.IsKeyPressed(Input::Key::ArrowUp))
-		{
-			velocity.y = -moveSpeed;
-		}
-		if (input.IsKeyPressed(Input::Key::ArrowDown))
-		{
-			velocity.y = moveSpeed;
-		}
-
-		double xMouvement = velocity.x * deltaTime;
-		double yMouvement = velocity.y * deltaTime;
-
-		vikingSprite.SetPosition(pos.x + xMouvement, pos.y + yMouvement);
-	}
-	
-	void Game::CaptureEvent()
-	{
-		event.PollEvents();
+		// ---
+		sceneStateMachine.Update(deltaTime);
 	}
 
 	void Game::LateUpdate()
 	{
+		sceneStateMachine.LateUpdate(deltaTime);
 	}
 	
 	void Game::Draw()
 	{
 		Renderer::Get().BeginDraw();
-		Renderer::Get().Draw(vikingSprite);
+		sceneStateMachine.Draw();
 		Renderer::Get().EndDraw();
+	}
+
+	void Game::CaptureEvent()
+	{
+		event.PollEvents();
 	}
 	
 	bool Game::IsRunning()
@@ -68,17 +57,11 @@ namespace Helio
 		return event.IsRunning();
 	}
 
-	void Game::CaptureInput()
-	{
-		input.Update();
-	}
-
 	void Game::CalculateDeltaTime()
 	{
 		deltaTime = clock.GetDeltaTime();
 		std::cout << deltaTime << std::endl;
 	}
-
 
 	Game::~Game()
 	{
